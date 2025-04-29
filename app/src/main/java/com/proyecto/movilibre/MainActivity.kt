@@ -12,11 +12,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.proyecto.movilibre.ui.theme.MoviLibreTheme
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        // Permite contenido detrás de las barras del sistema
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        hideSystemBars() // Oculta las barras
+
         setContent {
             MoviLibreTheme {
                 val navController = rememberNavController()
@@ -26,18 +34,22 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
-// Puedes eliminar o comentar estas funciones si ya no las necesitas.
-@Preview(showBackground = true)
-@Composable
-fun LoginPreview() {
-    // Usamos rememberNavController para crear un NavHostController para la vista previa
-    val navController = rememberNavController()
+    private fun hideSystemBars() {
+        val controller = WindowCompat.getInsetsController(window, window.decorView)
+        controller?.let {
+            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.hide(WindowInsetsCompat.Type.systemBars())
+        }
+    }
 
-    MoviLibreTheme {
-        // Le pasamos el navController a LoginView
-        LoginView(navController = navController)
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            hideSystemBars()
+        }
     }
 }
+
+
 

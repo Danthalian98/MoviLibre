@@ -67,12 +67,10 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
 
         // Botón de regreso
         BtnVolver(
-
             onClick = {
-                // Aquí defines la acción que ocurre al hacer clic en el botón Volver
-                // Por ejemplo, podrías navegar a la pantalla anterior:
-                // navController.popBackStack()
-                println("Botón Volver presionado")
+                if (navController.previousBackStackEntry != null) {
+                    navController.popBackStack()
+                }
             }
         )
     }

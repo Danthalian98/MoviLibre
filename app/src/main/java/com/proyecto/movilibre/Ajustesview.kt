@@ -15,10 +15,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Registroview(navController: androidx.navigation.NavHostController) {
+fun Ajustesview(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -28,7 +29,7 @@ fun Registroview(navController: androidx.navigation.NavHostController) {
     ) {
         // Título
         Text(
-            text = "Registro",
+            text = "Ajustes",
             color = Color.White,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
@@ -40,40 +41,31 @@ fun Registroview(navController: androidx.navigation.NavHostController) {
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        // Icono
-        Image(
-            painter = painterResource(id = R.drawable.ic_accessibility),
-            contentDescription = "Accessibility Icon",
-            modifier = Modifier.size(223.dp)
+        // Rutas 1
+        btnDesplegable2(
+            estado = false,
+            navController = navController
         )
 
-        Spacer(modifier = Modifier.height(50.dp))
-
-        // Campos de entrada
-        NombreInput()
-        CorreoInput()
-        PasswInput()
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // Botón de Registro
-        btnRegistro()
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Botón de regreso
-        BtnVolver(
-            onClick = {
-                if (navController.previousBackStackEntry != null) {
-                    navController.popBackStack()
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 100.dp),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            BtnVolver(
+                onClick = {
+                    if (navController.previousBackStackEntry != null) {
+                        navController.popBackStack()
+                    }
                 }
-            }
-        )
+            )
+        }
+
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewRegistroview() {
-    Registroview(navController = rememberNavController())
+fun Ajustesview() {
+    Ajustesview(navController = rememberNavController())
 }

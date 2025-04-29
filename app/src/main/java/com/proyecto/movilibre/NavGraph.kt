@@ -7,7 +7,16 @@ import androidx.navigation.compose.composable
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "login") {
+    NavHost(navController = navController, startDestination = "mainv") {
+        composable("mainv") {
+            Mainview(navController)
+        }
+        composable("rutasv") {
+            Rutasview(navController)
+        }
+        composable("ajustesv") {
+            Ajustesview(navController)
+        }
         composable("login") {
             LoginView(navController)
         }
