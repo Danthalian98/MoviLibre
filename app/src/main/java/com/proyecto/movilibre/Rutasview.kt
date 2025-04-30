@@ -1,23 +1,23 @@
 package com.proyecto.movilibre
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.proyecto.movilibre.componentes.BtnVolver
+import com.proyecto.movilibre.componentes.btnDesplegable
 
 @Composable
 fun Rutasview(navController: androidx.navigation.NavHostController) {
@@ -30,7 +30,7 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(colorResource(id = R.color.BlancoBKG))
     ) {
         // Scrollable content
         Column(
@@ -41,13 +41,13 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
         ) {
             // Título
             Text(
-                text = "Rutas",
+                text = stringResource(id = R.string.title_Rutas),
                 color = Color.White,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFF007AFF))
+                    .background(colorResource(id = R.color.AzulTopBar))
                     .padding(20.dp)
             )
 

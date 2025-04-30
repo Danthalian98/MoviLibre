@@ -1,8 +1,6 @@
 
-package com.proyecto.movilibre
+package com.proyecto.movilibre.componentes
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -16,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.sp
+import com.proyecto.movilibre.R
 
 
 // Composable function for the dropdown button
@@ -35,9 +34,7 @@ fun btnDesplegable(
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF9E9E9E)
-            )
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris))
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,

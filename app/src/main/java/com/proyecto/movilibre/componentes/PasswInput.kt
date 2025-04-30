@@ -1,7 +1,5 @@
-package com.proyecto.movilibre
+package com.proyecto.movilibre.componentes
 
-
-// Necessary imports
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -9,34 +7,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.proyecto.movilibre.R
 
-// NombreInput Composable function
 @Composable
-fun NombreInput() {
-    // State for the first text field
-    var nombreText by remember { mutableStateOf("") }
+fun PasswInput() {
+    var password by remember { mutableStateOf("") }
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
-    // State for the second text field
-    var textolleno by remember { mutableStateOf("") }
+    var textoLlenoText by remember { mutableStateOf("") }
 
-    // Column to arrange text fields vertically
     Column(
-        modifier = Modifier
-            .padding(8.dp)
+        modifier = Modifier.padding(8.dp)
     ) {
-        // First TextField for "Nombre"
         OutlinedTextField(
             shape = RoundedCornerShape(50),
-            value = nombreText,
-            onValueChange = { nombreText = it },
-            label = { Text("Nombre") },
-            placeholder = { Text("Ingresa tu Nombre") }, // Hint para el primer campo
+            value = password,
+            onValueChange = { password = it },
+            label = { Text(stringResource(id = R.string.ContraHint1)) },
+            placeholder = { Text(stringResource(id = R.string.ContraHint2)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
                     // Mostrar el segundo campo cuando el primer campo pierde el foco y tiene texto
-                    if (!focusState.isFocused && nombreText.isNotEmpty()) {
+                    if (!focusState.isFocused && password.isNotEmpty()) {
                         mostrarSegundoCampo = true
                     }
                 }
@@ -45,9 +39,9 @@ fun NombreInput() {
     }
 }
 
-// Preview function for NombreInput
+// Preview function
 @Preview(showBackground = true)
 @Composable
-fun NombreInputPreview() {
-    NombreInput()
+fun PasswInputPreview() {
+    PasswInput()
 }

@@ -1,8 +1,6 @@
 
-package com.proyecto.movilibre
+package com.proyecto.movilibre.componentes
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -15,9 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.proyecto.movilibre.R
 
 
 // Composable function for the dropdown button
@@ -38,14 +38,14 @@ fun btnDesplegable2(
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF9E9E9E))
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris))
         ) {
             Row(
                 modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Notificaciones", color = Color.White, fontSize = 22.sp)
+                Text(text = stringResource(id = R.string.Notif), color = Color.White, fontSize = 22.sp)
                 Icon(
                     painter = painterResource(
                         id = if (expandedNotificaciones)
@@ -74,7 +74,13 @@ fun btnDesplegable2(
                     Text(text = texto, fontSize = 18.sp)
                     Switch(
                         checked = switches[index],
-                        onCheckedChange = { switches[index] = it }
+                        onCheckedChange = { switches[index] = it },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = colorResource(id = R.color.swAzul1),
+                            uncheckedThumbColor = colorResource(id = R.color.GrisMed),
+                            checkedTrackColor = colorResource(id = R.color.swAzul2),
+                            uncheckedTrackColor = colorResource(id = R.color.Gris)
+                        )
                     )
                 }
             }
@@ -90,14 +96,14 @@ fun btnDesplegable2(
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF9E9E9E))
+            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris))
         ) {
             Row(
                 modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Usuario", color = Color.White, fontSize = 22.sp)
+                Text(text = stringResource(id = R.string.strUser), color = Color.White, fontSize = 22.sp)
                 Icon(
                     painter = painterResource(
                         id = if (expandedUsuario)
@@ -123,11 +129,11 @@ fun btnDesplegable2(
                     Button(
                         onClick = { navController.navigate("login") },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF9E9E9E) // Dark gray color
+                            containerColor = colorResource(id = R.color.Gris) // Dark gray color
                         ),
                         shape = RoundedCornerShape(50)
                     ) {
-                        Text("Iniciar sesión", fontSize = 18.sp)
+                        Text(stringResource(id = R.string.btnIniciarS), fontSize = 22.sp)
                     }
                 }
             } else {

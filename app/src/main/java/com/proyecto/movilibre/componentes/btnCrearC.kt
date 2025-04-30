@@ -1,4 +1,4 @@
-package com.proyecto.movilibre
+package com.proyecto.movilibre.componentes
 
 
 // Necessary imports
@@ -10,25 +10,28 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.proyecto.movilibre.R
 
 // Composable function for the button
 @Composable
 fun btnCrearC(onClick: () -> Unit) {
     Text(
-        text = "Crear cuenta",
+        text = stringResource(id = R.string.CrearC),
         textAlign = TextAlign.Center,
-        color = Color(0xFF007AFF),
+        color = colorResource(id = R.color.AzulTopBar),
         fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
-            .clickable(onClick = onClick) // <- aquí llamamos a la función pasada
+            .clickable(onClick = onClick)
     )
 }
 
@@ -37,8 +40,6 @@ fun btnCrearC(onClick: () -> Unit) {
 @Composable
 fun PreviewBtnCrearC() {
     MaterialTheme {
-        btnCrearC {
-            println("Preview: Crear cuenta presionado")
-        }
+        btnCrearC {        }
     }
 }

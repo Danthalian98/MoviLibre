@@ -7,6 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- ...Paleta de colores -->
+    <color name="Verde">#45C753</color>
+    <color name="VerdeClaro">#FF38E428</color>
+    <color name="BlancoBKG">#F5F5F5</color>
+    <color name="AzulTopBar">#007AFF</color>
+    <color name="swAzul1">#007AFF</color>
+    <color name="swAzul2">#00C8FF</color>
+    <color name="iconAzul">#154D97</color>
     <color name="Gris">#FF9E9E9E</color>
-    <color name="VerdeClaro">#44CC77</color>
+    <color name="GrisMed">#4A4A4A</color>
+    <color name="GrisOscuro">#333333</color>
+    <color name="Amarillo">#FFD60A</color>
+    <color name="Naranja">#FF9500</color>
 </resources>

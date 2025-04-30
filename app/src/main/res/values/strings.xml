@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">MoviLibre</string>
+    <!-- ...Titulos -->
+    <string name="title_Ajustes">Ajustes</string>
+    <string name="title_Login">Iniciar Sesión</string>
+    <string name="title_Registro">Registro</string>
+    <string name="title_Rutas">Rutas</string>
+
+    <!-- ...Botones -->
+    <string name="CrearC">Crear cuenta</string>
+    <string name="Notif">Notificaciones</string>
+    <string name="strUser">Usuario</string>
+    <string name="btnIniciarS">Iniciar sesión</string>
+    <string name="btnRegistrar">Registrar</string>
+    <string name="btnAjustes">Ajustes</string>
+    <string name="btnRutas">Rutas</string>
+
+    <!-- ...Inputs -->
+    <string name="CorreoHint1">Correo</string>
+    <string name="CorreoHint2">Ingresa tu correo</string>
+    <string name="NombreHint1">Nombre</string>
+    <string name="NombreHint2">Ingresa tu nombre</string>
+    <string name="ContraHint1">Contraseña</string>
+    <string name="ContraHint2">Ingresa tu contraseña</string>
 </resources>

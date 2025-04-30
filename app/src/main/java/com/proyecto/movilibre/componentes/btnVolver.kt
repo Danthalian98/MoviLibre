@@ -1,4 +1,4 @@
-package com.proyecto.movilibre
+package com.proyecto.movilibre.componentes
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
+import com.proyecto.movilibre.R
 
 // Composable function for the image button
 @Composable
@@ -27,10 +28,10 @@ fun BtnVolver(onClick: () -> Unit) {
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_back), // Replace with your back arrow icon
+            painter = painterResource(id = R.drawable.ic_back),
             contentDescription = "Volver",
-            modifier = Modifier.fillMaxSize(), // Make the Icon fill the Box
-            tint = Color(0xFF38E428) // Optional: Set a tint color for the icon
+            modifier = Modifier.fillMaxSize(),
+            tint = colorResource(id = R.color.VerdeClaro)
         )
     }
 }
@@ -39,7 +40,5 @@ fun BtnVolver(onClick: () -> Unit) {
 @Preview
 @Composable
 fun PreviewBtnVolver() {
-    BtnVolver(onClick = {
-        println("Botón Volver clickeado")
-    })
+    BtnVolver(onClick = {    })
 }

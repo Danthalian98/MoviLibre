@@ -1,6 +1,5 @@
-package com.proyecto.movilibre
+package com.proyecto.movilibre.componentes
 
-// Necessary imports
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -8,34 +7,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.proyecto.movilibre.R
 
-// Composable function for CorreoInput
 @Composable
-fun CorreoInput() {
-    // State for the first text field
-    var correoText by remember { mutableStateOf("") }
-    // State to control the visibility of the second text field
+fun NombreInput() {
+    var nombreText by remember { mutableStateOf("") }
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
-    // State for the second text field
-    var textoLlenoText by remember { mutableStateOf("") }
+    var textolleno by remember { mutableStateOf("") }
 
-    // Column to arrange the text fields vertically
     Column(
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier
+            .padding(8.dp)
     ) {
-        // First text field (Correo)
         OutlinedTextField(
             shape = RoundedCornerShape(50),
-            value = correoText,
-            onValueChange = { correoText = it },
-            label = { Text("Correo") },
-            placeholder = { Text("Ingresa tu correo") }, // Hint para el primer campo
+            value = nombreText,
+            onValueChange = { nombreText = it },
+            label = { Text(stringResource(id = R.string.NombreHint1)) },
+            placeholder = { Text(stringResource(id = R.string.NombreHint2)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
                     // Mostrar el segundo campo cuando el primer campo pierde el foco y tiene texto
-                    if (!focusState.isFocused && correoText.isNotEmpty()) {
+                    if (!focusState.isFocused && nombreText.isNotEmpty()) {
                         mostrarSegundoCampo = true
                     }
                 }
@@ -44,9 +40,9 @@ fun CorreoInput() {
     }
 }
 
-// Preview function
+// Preview function for NombreInput
 @Preview(showBackground = true)
 @Composable
-fun PreviewCorreoInput() {
-    CorreoInput()
+fun NombreInputPreview() {
+    NombreInput()
 }
