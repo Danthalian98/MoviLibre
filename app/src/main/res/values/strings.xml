@@ -22,4 +22,5 @@
     <string name="NombreHint2">Ingresa tu nombre</string>
     <string name="ContraHint1">Contraseña</string>
     <string name="ContraHint2">Ingresa tu contraseña</string>
+
 </resources>

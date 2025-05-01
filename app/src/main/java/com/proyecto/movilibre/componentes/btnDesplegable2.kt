@@ -20,7 +20,6 @@ import androidx.navigation.compose.rememberNavController
 import com.proyecto.movilibre.R
 
 
-// Composable function for the dropdown button
 @Composable
 fun btnDesplegable2(
     estado: Boolean,
@@ -71,7 +70,7 @@ fun btnDesplegable2(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = texto, fontSize = 18.sp)
+                    Text(text = texto, fontSize = 18.sp, color = colorResource(id = R.color.GrisOscuro))
                     Switch(
                         checked = switches[index],
                         onCheckedChange = { switches[index] = it },

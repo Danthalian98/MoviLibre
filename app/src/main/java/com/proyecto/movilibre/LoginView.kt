@@ -32,7 +32,6 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Título
         Text(
             text = stringResource(id = R.string.title_Login),
             color = Color.White,
@@ -54,23 +53,19 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        // Campos de entrada
         CorreoInput()
         PasswInput()
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Botón de login
         btnLogin()
 
-        // Botón de crear cuenta
         btnCrearC {
             navController.navigate("registro")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón de regreso
         BtnVolver(
             onClick = {
                 if (navController.previousBackStackEntry != null) {
