@@ -12,25 +12,23 @@ import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
 
 @Composable
-fun PasswInput() {
-    var password by remember { mutableStateOf("") }
+fun PasswInput(value: String, onValueChange: (String) -> Unit) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
-    var textoLlenoText by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier.padding(8.dp)
     ) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
-            value = password,
-            onValueChange = { password = it },
+            value = value,
+            onValueChange = onValueChange,
             label = { Text(stringResource(id = R.string.ContraHint1)) },
             placeholder = { Text(stringResource(id = R.string.ContraHint2)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
                     // Mostrar el segundo campo cuando el primer campo pierde el foco y tiene texto
-                    if (!focusState.isFocused && password.isNotEmpty()) {
+                    if (!focusState.isFocused && value.isNotEmpty()) {
                         mostrarSegundoCampo = true
                     }
                 }
@@ -39,9 +37,9 @@ fun PasswInput() {
     }
 }
 
-// Preview function
 @Preview(showBackground = true)
 @Composable
 fun PasswInputPreview() {
-    PasswInput()
+    var value by remember { mutableStateOf("123456") }
+    PasswInput(value = value, onValueChange = { value = it })
 }

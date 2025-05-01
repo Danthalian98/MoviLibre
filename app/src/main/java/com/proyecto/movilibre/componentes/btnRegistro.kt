@@ -18,9 +18,9 @@ import com.proyecto.movilibre.R
 
 // Composable function for the button
 @Composable
-fun btnRegistro() {
+fun btnRegistro(onClick: () -> Unit) {
     Button(
-        onClick = { /*TODO: Add click action*/ },
+        onClick = onClick,
         shape = RoundedCornerShape(50.dp),
         colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris)),
         modifier = Modifier
@@ -40,5 +40,7 @@ fun btnRegistro() {
 @Preview
 @Composable
 fun PreviewBtnRegistro() {
-    btnRegistro()
+    btnRegistro(
+        onClick = TODO()
+    )
 }

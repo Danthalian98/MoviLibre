@@ -12,25 +12,22 @@ import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
 
 @Composable
-fun CorreoInput() {
-    var correoText by remember { mutableStateOf("") }
+fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
-    var textoLlenoText by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier.padding(8.dp)
     ) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
-            value = correoText,
-            onValueChange = { correoText = it },
+            value = value,
+            onValueChange = onValueChange,
             label = { Text(stringResource(id = R.string.CorreoHint1)) },
             placeholder = { Text(stringResource(id = R.string.CorreoHint2)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
-                    // Mostrar el segundo campo cuando el primer campo pierde el foco y tiene texto
-                    if (!focusState.isFocused && correoText.isNotEmpty()) {
+                    if (!focusState.isFocused && value.isNotEmpty()) {
                         mostrarSegundoCampo = true
                     }
                 }
@@ -43,5 +40,6 @@ fun CorreoInput() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewCorreoInput() {
-    CorreoInput()
+    var value by remember { mutableStateOf("correo@correo") }
+    CorreoInput(value = value, onValueChange = { value = it })
 }

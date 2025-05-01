@@ -1,5 +1,6 @@
 package com.proyecto.movilibre
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -8,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -21,9 +23,14 @@ import com.proyecto.movilibre.componentes.CorreoInput
 import com.proyecto.movilibre.componentes.PasswInput
 import com.proyecto.movilibre.componentes.btnCrearC
 import com.proyecto.movilibre.componentes.btnLogin
+import com.proyecto.movilibre.AuthHelper
 
 @Composable
 fun LoginView(navController: androidx.navigation.NavHostController) {
+    var correo by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -53,12 +60,32 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
 
         Spacer(modifier = Modifier.height(50.dp))
 
-        CorreoInput()
-        PasswInput()
+        CorreoInput(correo) { correo = it }
+        PasswInput(password) { password = it }
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        btnLogin()
+        val authHelper = AuthHelper()
+        var isLoading by remember { mutableStateOf(false) }
+
+        if (isLoading) {
+            CircularProgressIndicator()
+        } else {
+            btnLogin {
+                isLoading = true
+                authHelper.loginUser(correo, password, context) { success ->
+                    isLoading = false
+                    if (success) {
+                        navController.navigate("home") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    } else {
+                        Toast.makeText(context, "Login fallido", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
 
         btnCrearC {
             navController.navigate("registro")
@@ -75,6 +102,7 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
         )
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "834914341627",
+    "project_id": "movilibre-zap98",
+    "storage_bucket": "movilibre-zap98.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834914341627:android:a201da86787bd245d6565e",
+        "android_client_info": {
+          "package_name": "com.proyecto.movilibre"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXGysp8OXZRqk8H3Zh8-Cq1MYPweJOmRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

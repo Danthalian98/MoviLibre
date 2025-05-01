@@ -1,5 +1,6 @@
 package com.proyecto.movilibre
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -8,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -24,6 +26,14 @@ import com.proyecto.movilibre.componentes.btnRegistro
 
 @Composable
 fun Registroview(navController: androidx.navigation.NavHostController) {
+    val context = LocalContext.current
+    var nombre by remember { mutableStateOf("") }
+    var correo by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var isLoading by remember { mutableStateOf(false) }
+
+    val authHelper = AuthHelper()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -56,14 +66,30 @@ fun Registroview(navController: androidx.navigation.NavHostController) {
         Spacer(modifier = Modifier.height(50.dp))
 
         // Campos de entrada
-        NombreInput()
-        CorreoInput()
-        PasswInput()
+        NombreInput(nombre) { nombre = it }
+        CorreoInput(correo) { correo = it }
+        PasswInput(password) { password = it }
 
         Spacer(modifier = Modifier.height(8.dp))
 
         // Botón de Registro
-        btnRegistro()
+        if (isLoading) {
+            CircularProgressIndicator()
+        } else {
+            btnRegistro {
+                isLoading = true
+                authHelper.registerUser(nombre, correo, password, context) { success ->
+                    isLoading = false
+                    if (success) {
+                        navController.navigate("login") {
+                            popUpTo("registro") { inclusive = true }
+                        }
+                    } else {
+                        Toast.makeText(context, "Registro fallido", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 

@@ -12,10 +12,8 @@ import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
 
 @Composable
-fun NombreInput() {
-    var nombreText by remember { mutableStateOf("") }
+fun NombreInput(value: String, onValueChange: (String) -> Unit) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
-    var textolleno by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -23,15 +21,15 @@ fun NombreInput() {
     ) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
-            value = nombreText,
-            onValueChange = { nombreText = it },
+            value = value,
+            onValueChange = onValueChange,
             label = { Text(stringResource(id = R.string.NombreHint1)) },
             placeholder = { Text(stringResource(id = R.string.NombreHint2)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
                     // Mostrar el segundo campo cuando el primer campo pierde el foco y tiene texto
-                    if (!focusState.isFocused && nombreText.isNotEmpty()) {
+                    if (!focusState.isFocused && value.isNotEmpty()) {
                         mostrarSegundoCampo = true
                     }
                 }
@@ -44,5 +42,6 @@ fun NombreInput() {
 @Preview(showBackground = true)
 @Composable
 fun NombreInputPreview() {
-    NombreInput()
+    var value by remember { mutableStateOf("Zavala") }
+    NombreInput(value = value, onValueChange = { value = it })
 }
