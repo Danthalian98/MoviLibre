@@ -22,14 +22,14 @@ fun btnRegistro(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(50.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris)),
+        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary),
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth()
     ) {
         Text(
             text = stringResource(id = R.string.btnRegistrar),
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onSurface,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold
         )

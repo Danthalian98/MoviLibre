@@ -16,14 +16,13 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.sp
 import com.proyecto.movilibre.R
 
-
-// Composable function for the dropdown button
 @Composable
 fun btnDesplegable(
     tituloRuta: String,
     unidades: List<String>
 ) {
     var expanded by remember { mutableStateOf(false) }
+    val colorScheme = MaterialTheme.colorScheme
 
     Column {
         Button(
@@ -34,21 +33,28 @@ fun btnDesplegable(
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris))
+            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.tertiary)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp)
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 20.dp)
             ) {
-                Text(text = tituloRuta, color = Color.White, fontSize = 22.sp)
+                Text(
+                    text = tituloRuta,
+                    color = colorScheme.onSurface,
+                    fontSize = 22.sp
+                )
                 Icon(
                     painter = painterResource(id = if (expanded) R.drawable.ic_arrow_drop_down else R.drawable.ic_arrow_drop_up),
                     contentDescription = null,
-                    tint = colorResource(id = R.color.black)
+                    tint = colorScheme.onSurface
                 )
             }
         }
+
         if (expanded) {
             Column {
                 unidades.forEach { unidad ->
@@ -58,7 +64,7 @@ fun btnDesplegable(
                             .fillMaxWidth()
                             .padding(horizontal = 32.dp)
                             .padding(12.dp),
-                        color = Color.Black,
+                        color = colorScheme.onBackground,
                         fontSize = 18.sp
                     )
                 }
@@ -66,7 +72,6 @@ fun btnDesplegable(
         }
     }
 }
-
 
 // Preview function
 @Preview

@@ -12,12 +12,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.proyecto.movilibre.R
+import com.proyecto.movilibre.data.UserPreferences
+import kotlinx.coroutines.launch
+import com.proyecto.movilibre.AuthHelper
 
 
 @Composable
@@ -25,8 +31,19 @@ fun btnDesplegable2(
     estado: Boolean,
     navController: NavHostController
 ) {
+    val context = LocalContext.current
+    val prefs = remember { UserPreferences(context) }
+    val scope = rememberCoroutineScope()
+
+    val sonido by prefs.sonido.collectAsState(initial = true)
+    val vibracion by prefs.vibracion.collectAsState(initial = true)
+    val correo by prefs.correo.collectAsState(initial = true)
+    val temaOscuro by prefs.temaOscuro.collectAsState(initial = false)
+
     var expandedNotificaciones by remember { mutableStateOf(false) }
     var expandedUsuario by remember { mutableStateOf(false) }
+
+    val colorScheme = MaterialTheme.colorScheme
 
     Column {
         // Sección: Notificaciones
@@ -37,14 +54,20 @@ fun btnDesplegable2(
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris))
+            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.tertiary)
         ) {
             Row(
-                modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 20.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = stringResource(id = R.string.Notif), color = Color.White, fontSize = 22.sp)
+                Text(
+                    text = stringResource(id = R.string.Notif),
+                    color = colorScheme.onSurface,
+                    fontSize = 22.sp
+                )
                 Icon(
                     painter = painterResource(
                         id = if (expandedNotificaciones)
@@ -53,16 +76,17 @@ fun btnDesplegable2(
                             R.drawable.ic_arrow_drop_up
                     ),
                     contentDescription = null,
-                    tint = Color.Black
+                    tint = colorScheme.onSurface
                 )
             }
         }
 
         if (expandedNotificaciones) {
             val notificaciones = listOf("Sonido", "Vibración", "Correo")
-            val switches = remember { mutableStateListOf(true, false, true) }
+            val estados = listOf(sonido, vibracion, correo)
 
             notificaciones.forEachIndexed { index, texto ->
+                val checked = estados[index]
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -70,15 +94,27 @@ fun btnDesplegable2(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = texto, fontSize = 18.sp, color = colorResource(id = R.color.GrisOscuro))
+                    Text(
+                        text = texto,
+                        fontSize = 18.sp,
+                        color = colorScheme.onBackground
+                    )
                     Switch(
-                        checked = switches[index],
-                        onCheckedChange = { switches[index] = it },
+                        checked = checked,
+                        onCheckedChange = {
+                            scope.launch {
+                                when (index) {
+                                    0 -> prefs.setSonido(it)
+                                    1 -> prefs.setVibracion(it)
+                                    2 -> prefs.setCorreo(it)
+                                }
+                            }
+                        },
                         colors = SwitchDefaults.colors(
-                            checkedThumbColor = colorResource(id = R.color.swAzul1),
-                            uncheckedThumbColor = colorResource(id = R.color.GrisMed),
-                            checkedTrackColor = colorResource(id = R.color.swAzul2),
-                            uncheckedTrackColor = colorResource(id = R.color.Gris)
+                            checkedThumbColor = colorScheme.primary,
+                            uncheckedThumbColor = colorScheme.outline,
+                            checkedTrackColor = colorScheme.primary.copy(alpha = 0.5f),
+                            uncheckedTrackColor = colorScheme.outline.copy(alpha = 0.3f)
                         )
                     )
                 }
@@ -95,14 +131,20 @@ fun btnDesplegable2(
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
-            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris))
+            colors = ButtonDefaults.buttonColors(containerColor = colorScheme.tertiary)
         ) {
             Row(
-                modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 20.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = stringResource(id = R.string.strUser), color = Color.White, fontSize = 22.sp)
+                Text(
+                    text = stringResource(id = R.string.strUser),
+                    color = colorScheme.onSurface,
+                    fontSize = 22.sp
+                )
                 Icon(
                     painter = painterResource(
                         id = if (expandedUsuario)
@@ -111,14 +153,13 @@ fun btnDesplegable2(
                             R.drawable.ic_arrow_drop_up
                     ),
                     contentDescription = null,
-                    tint = Color.Black
+                    tint = colorScheme.onSurface
                 )
             }
         }
 
         if (expandedUsuario) {
             if (!estado) {
-                // Solo un botón centrado
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -128,34 +169,88 @@ fun btnDesplegable2(
                     Button(
                         onClick = { navController.navigate("login") },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(id = R.color.Gris) // Dark gray color
+                            containerColor = colorScheme.primary
                         ),
                         shape = RoundedCornerShape(50)
                     ) {
-                        Text(stringResource(id = R.string.btnIniciarS), fontSize = 22.sp)
+                        Text(
+                            stringResource(id = R.string.btnIniciarS),
+                            fontSize = 22.sp,
+                            color = colorScheme.onPrimary
+                        )
                     }
                 }
             } else {
-                // 3 opciones como en notificaciones
-                val opciones = listOf("Perfil", "Cambiar contraseña", "Cerrar sesión")
-                opciones.forEach { texto ->
-                    Text(
-                        text = texto,
+                Column(modifier = Modifier.padding(horizontal = 32.dp)) {
+                    Button(
+                        onClick = { /* navegar a perfil */ },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 32.dp)
+                            .padding(vertical = 6.dp),
+                        shape = RoundedCornerShape(50),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorScheme.surfaceVariant)
+                    ) {
+                        Text("Perfil", fontSize = 18.sp, color = colorScheme.onSurfaceVariant)
+                    }
+
+                    Button(
+                        onClick = { /* cambiar contraseña */ },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 6.dp),
+                        shape = RoundedCornerShape(50),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorScheme.surfaceVariant)
+                    ) {
+                        Text("Cambiar contraseña", fontSize = 18.sp, color = colorScheme.onSurfaceVariant)
+                    }
+
+                    Button(
+                        onClick = {
+                            Firebase.auth.signOut()
+
+                            navController.navigate("mainv") {
+                                popUpTo(0) { inclusive = true }
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 6.dp),
+                        shape = RoundedCornerShape(50),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorScheme.error,
+                            contentColor = colorScheme.onError
+                        )
+                    ) {
+                        Text("Cerrar sesión", fontSize = 18.sp)
+                    }
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
                             .padding(vertical = 12.dp),
-                        color = Color.Black,
-                        fontSize = 18.sp
-                    )
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(text = "Tema oscuro", fontSize = 18.sp, color = colorScheme.onBackground)
+                        Switch(
+                            checked = temaOscuro,
+                            onCheckedChange = {
+                                scope.launch { prefs.setTemaOscuro(it) }
+                            },
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = colorScheme.primary,
+                                uncheckedThumbColor = colorScheme.outline,
+                                checkedTrackColor = colorScheme.primary.copy(alpha = 0.5f),
+                                uncheckedTrackColor = colorScheme.outline.copy(alpha = 0.3f)
+                            )
+                        )
+                    }
                 }
             }
         }
     }
 }
 
-
-// Preview function
 @Preview
 @Composable
 fun PreviewbtnDesplegable2() {

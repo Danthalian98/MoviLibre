@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,19 +26,20 @@ fun btnLogin(onClick: () -> Unit) {
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(50),
-        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.Gris)),
+        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary),
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
     ) {
         Text(
             text = stringResource(id = R.string.btnIniciarS),
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onSurface,
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold
         )
     }
 }
+
 
 // Preview function
 @Preview

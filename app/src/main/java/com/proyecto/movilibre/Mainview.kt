@@ -24,20 +24,19 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun Mainview(navController: androidx.navigation.NavHostController) {
+    val colorScheme = MaterialTheme.colorScheme
+
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
-        // Map Image
+        // Imagen de fondo (mapa)
         Image(
             painter = painterResource(id = R.drawable.map_placeholder),
             contentDescription = "Map",
             contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         )
 
-        // Buttons Row
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -46,43 +45,45 @@ fun Mainview(navController: androidx.navigation.NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(16.dp))
-            Row (
-                modifier = Modifier
-                    .fillMaxWidth()
-            ){
+
+            // Botones
+            Row(modifier = Modifier.fillMaxWidth()) {
                 Button(
                     onClick = { navController.navigate("rutasv") },
-                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.AzulTopBar)),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.primary),
                     modifier = Modifier
                         .weight(1f)
                         .padding(end = 4.dp, bottom = 8.dp)
                 ) {
                     Text(
                         text = stringResource(id = R.string.btnRutas),
-                        color = Color.White,
+                        color = colorScheme.onPrimary,
                         fontSize = 16.sp
                     )
                 }
 
                 Button(
                     onClick = { navController.navigate("ajustesv") },
-                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.AzulTopBar)),
+                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.primary),
                     modifier = Modifier
                         .weight(1f)
                         .padding(end = 4.dp, bottom = 8.dp)
                 ) {
                     Text(
                         text = stringResource(id = R.string.btnAjustes),
-                        color = Color.White,
+                        color = colorScheme.onPrimary,
                         fontSize = 16.sp
                     )
                 }
             }
+
+            // Tarjeta de ruta actual
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
                 shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = colorScheme.surface),
                 elevation = CardDefaults.cardElevation(8.dp)
             ) {
                 Row(
@@ -98,44 +99,48 @@ fun Mainview(navController: androidx.navigation.NavHostController) {
                     Spacer(modifier = Modifier.width(16.dp))
 
                     Column {
-                        Text(text = "Ruta: X - M", fontWeight = FontWeight.Bold)
-                        Text(text = "Tiempo: Y mins.")
+                        Text(text = "Ruta: X - M", fontWeight = FontWeight.Bold, color = colorScheme.onSurface)
+                        Text(text = "Tiempo: Y mins.", color = colorScheme.onSurface)
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = "Disp.:")
+                            Text(text = "Disp.:", color = colorScheme.onSurface)
                             Spacer(modifier = Modifier.width(4.dp))
                             Box(
                                 modifier = Modifier
                                     .size(16.dp)
                                     .clip(CircleShape)
-                                    .background(Color(0xFFFFA500))
+                                    .background(colorResource(id = R.color.Naranja)) // Naranja - medio
                             )
                             Spacer(modifier = Modifier.width(4.dp))
                             Box(
                                 modifier = Modifier
                                     .size(16.dp)
                                     .clip(CircleShape)
-                                    .background(Color(0xFF00FF00))
+                                    .background(colorResource(id = R.color.Verde)) // Verde - buena disponibilidad
                             )
                         }
                     }
                 }
             }
+
+            // Tarjeta de próxima ruta
             Spacer(modifier = Modifier.height(16.dp))
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
                 shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = colorScheme.surface),
                 elevation = CardDefaults.cardElevation(8.dp)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = "Próxima ruta: X - N")
-                    Text(text = "Dentro de: X mins.")
+                    Text(text = "Próxima ruta: X - N", color = colorScheme.onSurface)
+                    Text(text = "Dentro de: X mins.", color = colorScheme.onSurface)
                 }
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

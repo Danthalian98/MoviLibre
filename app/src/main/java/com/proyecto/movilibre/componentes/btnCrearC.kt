@@ -1,7 +1,5 @@
 package com.proyecto.movilibre.componentes
 
-
-// Necessary imports
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,7 +23,7 @@ fun btnCrearC(onClick: () -> Unit) {
     Text(
         text = stringResource(id = R.string.CrearC),
         textAlign = TextAlign.Center,
-        color = colorResource(id = R.color.AzulTopBar),
+        color = MaterialTheme.colorScheme.primary,
         fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier

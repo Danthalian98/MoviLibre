@@ -17,40 +17,55 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.proyecto.movilibre.componentes.BtnVolver
 import com.proyecto.movilibre.componentes.btnDesplegable2
+import com.google.firebase.auth.FirebaseAuth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @Composable
-fun Ajustesview(navController: NavHostController) {
-    Column(
+fun Ajustesview(navController: androidx.navigation.NavHostController) {
+    val user = FirebaseAuth.getInstance().currentUser
+    val isLoggedIn = user != null
+    val colorScheme = MaterialTheme.colorScheme
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(0.dp)
-            .background(colorResource(id = R.color.BlancoBKG)),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(colorScheme.background)
     ) {
-        // Título
-        Text(
-            text = stringResource(id = R.string.title_Ajustes),
-            color = Color.White,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 80.dp)
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            // Título
+            Text(
+                text = stringResource(id = R.string.title_Ajustes),
+                color = colorScheme.onPrimary,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(colorScheme.primary)
+                    .padding(20.dp)
+            )
+
+            Spacer(modifier = Modifier.height(50.dp))
+
+            btnDesplegable2(
+                estado = isLoggedIn,
+                navController = navController
+            )
+        }
+
+        // Botón fijo abajo
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(colorResource(id = R.color.AzulTopBar))
-                .padding(20.dp)
-        )
-
-        Spacer(modifier = Modifier.height(50.dp))
-
-        btnDesplegable2(
-            estado = false,
-            navController = navController
-        )
-
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = 100.dp),
-            contentAlignment = Alignment.BottomCenter
+                .align(Alignment.BottomCenter)
+                .padding(50.dp),
+            contentAlignment = Alignment.Center
         ) {
             BtnVolver(
                 onClick = {
@@ -60,7 +75,6 @@ fun Ajustesview(navController: NavHostController) {
                 }
             )
         }
-
     }
 }
 

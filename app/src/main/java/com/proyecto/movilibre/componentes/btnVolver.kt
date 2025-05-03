@@ -13,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
 import com.proyecto.movilibre.R
@@ -31,7 +32,7 @@ fun BtnVolver(onClick: () -> Unit) {
             painter = painterResource(id = R.drawable.ic_back),
             contentDescription = "Volver",
             modifier = Modifier.fillMaxSize(),
-            tint = colorResource(id = R.color.VerdeClaro)
+            tint = MaterialTheme.colorScheme.secondary
         )
     }
 }

@@ -4,6 +4,16 @@ import android.content.Context
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import androidx.credentials.Credential
+import androidx.credentials.CredentialManager
+import androidx.credentials.CreatePasswordRequest
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.PasswordCredential
+import androidx.credentials.GetPasswordOption
+import androidx.credentials.exceptions.CreateCredentialException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AuthHelper {
 
@@ -54,6 +64,42 @@ class AuthHelper {
                     onResult(false)
                 }
             }
+    }
+
+    fun saveCredential(correo: String, password: String, context: Context) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val credentialManager = CredentialManager.create(context)
+
+            val createRequest = CreatePasswordRequest(
+                id = correo,
+                password = password
+            )
+
+            try {
+                credentialManager.createCredential(
+                    request = createRequest,
+                    context = context
+                )
+                Log.d("Credenciales", "Credencial guardada con éxito")
+            } catch (e: CreateCredentialException) {
+                Log.e("Credenciales", "Error al guardar credencial: ${e.message}")
+            }
+        }
+    }
+
+    suspend fun getSavedCredential(context: Context): Pair<String, String>? {
+        val credentialManager = CredentialManager.create(context)
+        return try {
+            val result = credentialManager.getCredential(
+                request = GetCredentialRequest(listOf(GetPasswordOption())),
+                context = context
+            )
+            val credential = result.credential as? PasswordCredential
+            credential?.let { it.id to it.password }
+        } catch (e: Exception) {
+            Log.e("Credenciales", "Error al obtener credenciales: ${e.message}")
+            null
+        }
     }
 
 }

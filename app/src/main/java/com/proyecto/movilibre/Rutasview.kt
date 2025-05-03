@@ -27,10 +27,12 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
         "Ruta 3" to listOf("U-06", "U-07", "U-08", "U-09")
     )
 
+    val colorScheme = MaterialTheme.colorScheme
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.BlancoBKG))
+            .background(colorScheme.background)
     ) {
         // Scrollable content
         Column(
@@ -42,12 +44,12 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
             // Título
             Text(
                 text = stringResource(id = R.string.title_Rutas),
-                color = Color.White,
+                color = colorScheme.onPrimary,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(colorResource(id = R.color.AzulTopBar))
+                    .background(colorScheme.primary)
                     .padding(20.dp)
             )
 
@@ -64,7 +66,7 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(32.dp),
+                .padding(50.dp),
             contentAlignment = Alignment.Center
         ) {
             BtnVolver(
@@ -77,7 +79,6 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
