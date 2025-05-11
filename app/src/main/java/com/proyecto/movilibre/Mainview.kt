@@ -1,4 +1,3 @@
-
 package com.proyecto.movilibre
 
 import androidx.compose.foundation.Image
@@ -20,23 +19,41 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.maps.android.compose.*
+import com.google.android.gms.maps.model.*
+import android.Manifest
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import android.content.pm.PackageManager
+import android.widget.Toast
 
 @Composable
-fun Mainview(navController: androidx.navigation.NavHostController) {
+fun Mainview(navController: NavHostController) {
     val colorScheme = MaterialTheme.colorScheme
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(LatLng(19.4326, -99.1332), 12f) // CDMX
+    }
 
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        // Imagen de fondo (mapa)
-        Image(
-            painter = painterResource(id = R.drawable.map_placeholder),
-            contentDescription = "Map",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
+    Box(modifier = Modifier.fillMaxSize()) {
 
+        GoogleMap(
+            modifier = Modifier.fillMaxSize(),
+            cameraPositionState = cameraPositionState
+        ) {
+            Marker(
+                state = MarkerState(position = LatLng(19.4326, -99.1332)),
+                title = "Aquí estás",
+                snippet = "Ubicación de ejemplo"
+            )
+        }
+
+        //  Contenido encima del mapa
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -108,22 +125,23 @@ fun Mainview(navController: androidx.navigation.NavHostController) {
                                 modifier = Modifier
                                     .size(16.dp)
                                     .clip(CircleShape)
-                                    .background(colorResource(id = R.color.Naranja)) // Naranja - medio
+                                    .background(colorResource(id = R.color.Naranja))
                             )
                             Spacer(modifier = Modifier.width(4.dp))
                             Box(
                                 modifier = Modifier
                                     .size(16.dp)
                                     .clip(CircleShape)
-                                    .background(colorResource(id = R.color.Verde)) // Verde - buena disponibilidad
+                                    .background(colorResource(id = R.color.Verde))
                             )
                         }
                     }
                 }
             }
 
-            // Tarjeta de próxima ruta
             Spacer(modifier = Modifier.height(16.dp))
+
+            // Tarjeta de próxima ruta
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -140,7 +158,6 @@ fun Mainview(navController: androidx.navigation.NavHostController) {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
