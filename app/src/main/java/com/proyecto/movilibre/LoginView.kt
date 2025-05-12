@@ -35,6 +35,7 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
     val colorScheme = MaterialTheme.colorScheme
     val authHelper = AuthHelper()
     var isLoading by remember { mutableStateOf(false) }
+    var loginFallido by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         authHelper.getSavedCredential(context)?.let { (savedEmail, savedPass) ->
@@ -51,7 +52,8 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 80.dp)
+                .padding(bottom = 0.dp)
+                .imePadding()
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -77,7 +79,12 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
             Spacer(modifier = Modifier.height(50.dp))
 
             CorreoInput(correo) { correo = it }
-            PasswInput(password) { password = it }
+            PasswInput(
+                value = password,
+                onValueChange = { password = it },
+                isError = loginFallido,
+                errorMessages = if (loginFallido) listOf("Correo o contraseña incorrectos") else emptyList()
+            )
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -86,15 +93,22 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
             } else {
                 btnLogin {
                     isLoading = true
-                    authHelper.loginUser(correo, password, context) { success ->
+                    authHelper.loginUser(correo, password, context) { success, isVerified ->
                         isLoading = false
                         if (success) {
-                            navController.navigate("mainv") {
-                                popUpTo("login") { inclusive = true }
+                            loginFallido = false
+                            if (isVerified) {
+                                navController.navigate("mainv") {
+                                    popUpTo("login") { inclusive = true }
+                                }
+                            } else {
+                                Toast.makeText(context, "Correo no verificado. Revisa tu email.", Toast.LENGTH_LONG).show()
                             }
                         } else {
+                            loginFallido = true
                             Toast.makeText(context, "Login fallido", Toast.LENGTH_SHORT).show()
                         }
+
                     }
                 }
             }

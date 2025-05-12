@@ -22,6 +22,29 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
 import com.proyecto.movilibre.componentes.*
 
+fun validarPassword(password: String): Boolean {
+    val tieneMayuscula = password.any { it.isUpperCase() }
+    val tieneMinuscula = password.any { it.isLowerCase() }
+    val tieneNumero = password.any { it.isDigit() }
+    val tieneEspecial = password.any { !it.isLetterOrDigit() }
+    val longitudValida = password.length in 8..15
+
+    return tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial && longitudValida
+}
+
+fun obtenerErroresPassword(password: String): List<String> {
+    val errores = mutableListOf<String>()
+
+    if (password.length !in 8..15) errores.add("Debe tener entre 8 y 15 caracteres.")
+    if (!password.any { it.isUpperCase() }) errores.add("Debe incluir una letra mayúscula.")
+    if (!password.any { it.isLowerCase() }) errores.add("Debe incluir una letra minúscula.")
+    if (!password.any { it.isDigit() }) errores.add("Debe incluir un número.")
+    if (!password.any { !it.isLetterOrDigit() }) errores.add("Debe incluir un carácter especial.")
+
+    return errores
+}
+
+
 @Composable
 fun Registroview(navController: NavHostController) {
     val context = LocalContext.current
@@ -29,6 +52,7 @@ fun Registroview(navController: NavHostController) {
     var correo by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
+    var passwordErrors by remember { mutableStateOf<List<String>>(emptyList()) }
 
     val authHelper = AuthHelper()
     val colorScheme = MaterialTheme.colorScheme
@@ -41,7 +65,8 @@ fun Registroview(navController: NavHostController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 80.dp)
+                .padding(bottom = 0.dp)
+                .imePadding()
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -68,7 +93,18 @@ fun Registroview(navController: NavHostController) {
 
             NombreInput(nombre) { nombre = it }
             CorreoInput(correo) { correo = it }
-            PasswInput(password) { password = it }
+
+            // Campo de contraseña con validación en tiempo real
+            PasswInput(
+                value = password,
+                onValueChange = {
+                    password = it
+                    passwordErrors = obtenerErroresPassword(it)
+                },
+                isError = passwordErrors.isNotEmpty(),
+                errorMessages = passwordErrors
+            )
+
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -76,6 +112,9 @@ fun Registroview(navController: NavHostController) {
                 CircularProgressIndicator()
             } else {
                 btnRegistro {
+                    passwordErrors = obtenerErroresPassword(password)
+                    if (passwordErrors.isNotEmpty()) return@btnRegistro
+
                     isLoading = true
                     authHelper.registerUser(nombre, correo, password, context) { success ->
                         isLoading = false

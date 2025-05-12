@@ -17,13 +17,19 @@ import kotlinx.coroutines.launch
 
 class AuthHelper {
 
-    fun loginUser(email: String, password: String, context: Context, onResult: (Boolean) -> Unit) {
+    fun loginUser(email: String, password: String, context: Context, onResult: (Boolean, Boolean) -> Unit) {
         val auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
-                onResult(task.isSuccessful)
+                if (task.isSuccessful) {
+                    val isVerified = auth.currentUser?.isEmailVerified ?: false
+                    onResult(true, isVerified)
+                } else {
+                    onResult(false, false)
+                }
             }
     }
+
 
     fun registerUser(
         nombre: String,
@@ -38,6 +44,9 @@ class AuthHelper {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    // ✅ Enviar verificación de correo
+                    auth.currentUser?.sendEmailVerification()
+
                     val userId = auth.currentUser?.uid
                     val user = hashMapOf(
                         "nombre" to nombre,
@@ -64,6 +73,7 @@ class AuthHelper {
                     onResult(false)
                 }
             }
+
     }
 
     fun saveCredential(correo: String, password: String, context: Context) {

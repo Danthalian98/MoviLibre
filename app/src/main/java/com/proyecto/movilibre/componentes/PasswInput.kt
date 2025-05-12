@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.res.painterResource
@@ -13,10 +14,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.proyecto.movilibre.R
 
 @Composable
-fun PasswInput(value: String, onValueChange: (String) -> Unit) {
+fun PasswInput(
+    value: String,
+    onValueChange: (String) -> Unit,
+    isError: Boolean = false,
+    errorMessages: List<String> = emptyList()
+) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
 
@@ -39,6 +46,7 @@ fun PasswInput(value: String, onValueChange: (String) -> Unit) {
                     )
                 }
             },
+            isError = isError,
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
@@ -47,6 +55,20 @@ fun PasswInput(value: String, onValueChange: (String) -> Unit) {
                     }
                 }
         )
+
+        // Mostrar errores debajo del campo
+        if (isError) {
+            errorMessages.forEach { error ->
+                Text(
+                    text = error,
+                    color = MaterialTheme.colorScheme.error,
+                    fontSize = 12.sp,
+                    modifier = Modifier
+                        .padding(start = 16.dp, top = 2.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+            }
+        }
     }
 }
 
