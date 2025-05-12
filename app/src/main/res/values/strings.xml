@@ -23,4 +23,13 @@
     <string name="ContraHint1">Contraseña</string>
     <string name="ContraHint2">Ingresa tu contraseña</string>
 
+    <!--Errores en los Inputs-->
+    <string name="ErrorCorreoInvalido">Ingrese un correo electrónico válido</string>
+    <string name="ErrorNombreVacio">El nombre no puede estar vacío</string>
+    <string name="ErrorNombreSoloLetras">Solo se permiten letras y espacios</string>
+    <string name="ErrorNombreLongitudMaxima">El nombre no puede tener más de %1$d caracteres</string>
+    <string name="ErrorContrasenaLongitudMinima">La contraseña debe tener al menos %1$d caracteres</string>
+    <string name="ErrorContrasenaMayuscula">La contraseña debe contener al menos una letra mayúscula</string>
+    <string name="ErrorContrasenaMinuscula">La contraseña debe contener al menos una letra minúscula</string>
+    <string name="ErrorContrasenaNumero">La contraseña debe contener al menos un número</string>
 </resources>

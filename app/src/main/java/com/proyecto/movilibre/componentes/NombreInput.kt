@@ -13,19 +13,26 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun NombreInput(value: String, onValueChange: (String) -> Unit) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
+    var esNombreValido by remember { mutableStateOf(true) }
+    val maxCaracteres = 50 // Define la longitud máxima deseada
 
     Column(
-        modifier = Modifier
-            .padding(8.dp)
+        modifier = Modifier.padding(8.dp)
     ) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = { nuevoValor ->
+                if (nuevoValor.length <= maxCaracteres && nuevoValor.all { it.isLetter() || it.isWhitespace() }) {
+                    onValueChange(nuevoValor)
+                    esNombreValido = nuevoValor.isNotEmpty()
+                }
+            },
             label = { Text(stringResource(id = R.string.NombreHint1)) },
             placeholder = { Text(stringResource(id = R.string.NombreHint2)) },
             keyboardOptions = KeyboardOptions(
@@ -35,12 +42,24 @@ fun NombreInput(value: String, onValueChange: (String) -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
-                    // Mostrar el segundo campo cuando el primer campo pierde el foco y tiene texto
-                    if (!focusState.isFocused && value.isNotEmpty()) {
-                        mostrarSegundoCampo = true
+                    if (!focusState.isFocused) {
+                        mostrarSegundoCampo = value.isNotEmpty()
+                        esNombreValido = value.isNotEmpty() && value.all { it.isLetter() || it.isWhitespace() }
                     }
+                },
+            isError = !esNombreValido && value.isNotEmpty(),
+            supportingText = {
+                if (!esNombreValido && value.isNotEmpty()) {
+                    val mensajeError = if (value.isEmpty()) {
+                        stringResource(id = R.string.ErrorNombreVacio)
+                    } else {
+                        stringResource(id = R.string.ErrorNombreSoloLetras)
+                    }
+                    Text(mensajeError, color = Color.Red)
+                } else if (value.length > maxCaracteres) {
+                    Text(stringResource(id = R.string.ErrorNombreLongitudMaxima, maxCaracteres), color = Color.Red)
                 }
-
+            }
         )
     }
 }

@@ -21,17 +21,42 @@ import com.proyecto.movilibre.R
 fun PasswInput(
     value: String,
     onValueChange: (String) -> Unit,
-    isError: Boolean = false,
-    errorMessages: List<String> = emptyList()
+    onValidationChange: (Boolean, List<String>) -> Unit // Nueva función para comunicar el estado de validación
 ) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
+    val longitudMinima = 8
+
+    fun validarContrasena(password: String): List<String> {
+        val errores = mutableListOf<String>()
+        if (password.length < longitudMinima) {
+            errores.add(stringResource(id = R.string.ErrorContrasenaLongitudMinima, longitudMinima))
+        }
+        if (!password.any { it.isUpperCase() }) {
+            errores.add(stringResource(id = R.string.ErrorContrasenaMayuscula))
+        }
+        if (!password.any { it.isLowerCase() }) {
+            errores.add(stringResource(id = R.string.ErrorContrasenaMinuscula))
+        }
+        if (!password.any { it.isDigit() }) {
+            errores.add(stringResource(id = R.string.ErrorContrasenaNumero))
+        }
+        // Opcional: verificar símbolos
+        // if (!password.any { !it.isLetterOrDigit() }) {
+        //     errores.add(stringResource(id = R.string.ErrorContrasenaSimbolo))
+        // }
+        return errores
+    }
 
     Column(modifier = Modifier.padding(8.dp)) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = { nuevoValor ->
+                onValueChange(nuevoValor)
+                val errores = validarContrasena(nuevoValor)
+                onValidationChange(errores.isEmpty(), errores)
+            },
             label = { Text(stringResource(id = R.string.ContraHint1)) },
             placeholder = { Text(stringResource(id = R.string.ContraHint2)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -46,7 +71,7 @@ fun PasswInput(
                     )
                 }
             },
-            isError = isError,
+            isError = errorMessages.isNotEmpty(),
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
@@ -57,7 +82,7 @@ fun PasswInput(
         )
 
         // Mostrar errores debajo del campo
-        if (isError) {
+        if (errorMessages.isNotEmpty()) {
             errorMessages.forEach { error ->
                 Text(
                     text = error,
@@ -76,5 +101,5 @@ fun PasswInput(
 @Composable
 fun PasswInputPreview() {
     var value by remember { mutableStateOf("123456") }
-    PasswInput(value = value, onValueChange = { value = it })
+    PasswInput(value = value, onValueChange = { value = it }, onValidationChange = { _, _ -> })
 }

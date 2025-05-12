@@ -12,11 +12,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
-    var passwordVisible by remember { mutableStateOf(false) }
+    var esCorreoValido by remember { mutableStateOf(true) }
+    val regexCorreo = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$".toRegex()
 
     Column(
         modifier = Modifier.padding(8.dp)
@@ -24,7 +26,10 @@ fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = { nuevoValor ->
+                onValueChange(nuevoValor) // Llama a la función original para actualizar el valor
+                esCorreoValido = nuevoValor.matches(regexCorreo)
+            },
             label = { Text(stringResource(id = R.string.CorreoHint1)) },
             placeholder = { Text(stringResource(id = R.string.CorreoHint2)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -34,8 +39,13 @@ fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
                     if (!focusState.isFocused && value.isNotEmpty()) {
                         mostrarSegundoCampo = true
                     }
+                },
+            isError = !esCorreoValido,
+            supportingText = {
+                if (!esCorreoValido && value.isNotEmpty()) {
+                    Text(stringResource(id = R.string.ErrorCorreoInvalido), color = Color.Red)
                 }
-
+            }
         )
     }
 }
