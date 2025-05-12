@@ -1,6 +1,5 @@
 package com.proyecto.movilibre.componentes
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -9,44 +8,47 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.*
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.proyecto.movilibre.R
+import android.content.Context
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun PasswInput(
     value: String,
     onValueChange: (String) -> Unit,
-    onValidationChange: (Boolean, List<String>) -> Unit // Nueva función para comunicar el estado de validación
+    onValidationChange: (Boolean, List<String>) -> Unit
 ) {
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
     val longitudMinima = 8
+    val context = LocalContext.current
 
-    fun validarContrasena(password: String): List<String> {
-        val errores = mutableListOf<String>()
-        if (password.length < longitudMinima) {
-            errores.add(stringResource(id = R.string.ErrorContrasenaLongitudMinima, longitudMinima))
+    val erroresContrasena: List<String> by remember(value) {
+        derivedStateOf {
+            val errores = mutableListOf<String>()
+            if (value.length < longitudMinima) {
+                errores.add(context.getString(R.string.ErrorContrasenaLongitudMinima, longitudMinima))
+            }
+            if (!value.any { it.isUpperCase() }) {
+                errores.add(context.getString(R.string.ErrorContrasenaMayuscula))
+            }
+            if (!value.any { it.isLowerCase() }) {
+                errores.add(context.getString(R.string.ErrorContrasenaMinuscula))
+            }
+            if (!value.any { it.isDigit() }) {
+                errores.add(context.getString(R.string.ErrorContrasenaNumero))
+            }
+            errores
         }
-        if (!password.any { it.isUpperCase() }) {
-            errores.add(stringResource(id = R.string.ErrorContrasenaMayuscula))
-        }
-        if (!password.any { it.isLowerCase() }) {
-            errores.add(stringResource(id = R.string.ErrorContrasenaMinuscula))
-        }
-        if (!password.any { it.isDigit() }) {
-            errores.add(stringResource(id = R.string.ErrorContrasenaNumero))
-        }
-        // Opcional: verificar símbolos
-        // if (!password.any { !it.isLetterOrDigit() }) {
-        //     errores.add(stringResource(id = R.string.ErrorContrasenaSimbolo))
-        // }
-        return errores
     }
+
+    val esContrasenaValida by remember(erroresContrasena) { derivedStateOf { erroresContrasena.isEmpty() } }
 
     Column(modifier = Modifier.padding(8.dp)) {
         OutlinedTextField(
@@ -54,8 +56,7 @@ fun PasswInput(
             value = value,
             onValueChange = { nuevoValor ->
                 onValueChange(nuevoValor)
-                val errores = validarContrasena(nuevoValor)
-                onValidationChange(errores.isEmpty(), errores)
+                onValidationChange(esContrasenaValida, erroresContrasena)
             },
             label = { Text(stringResource(id = R.string.ContraHint1)) },
             placeholder = { Text(stringResource(id = R.string.ContraHint2)) },
@@ -71,7 +72,7 @@ fun PasswInput(
                     )
                 }
             },
-            isError = errorMessages.isNotEmpty(),
+            isError = !esContrasenaValida,
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
@@ -82,8 +83,8 @@ fun PasswInput(
         )
 
         // Mostrar errores debajo del campo
-        if (errorMessages.isNotEmpty()) {
-            errorMessages.forEach { error ->
+        if (!esContrasenaValida) {
+            erroresContrasena.forEach { error ->
                 Text(
                     text = error,
                     color = MaterialTheme.colorScheme.error,

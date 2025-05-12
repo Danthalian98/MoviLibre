@@ -36,6 +36,8 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
     val authHelper = AuthHelper()
     var isLoading by remember { mutableStateOf(false) }
     var loginFallido by remember { mutableStateOf(false) }
+    var esPasswordValida by remember { mutableStateOf(true) } // Nuevo estado para la validez de la contraseña
+    var mensajesErrorPassword by remember { mutableStateOf<List<String>>(emptyList()) } // Nuevo estado para los mensajes de error
 
     LaunchedEffect(Unit) {
         authHelper.getSavedCredential(context)?.let { (savedEmail, savedPass) ->
@@ -82,8 +84,10 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
             PasswInput(
                 value = password,
                 onValueChange = { password = it },
-                isError = loginFallido,
-                errorMessages = if (loginFallido) listOf("Correo o contraseña incorrectos") else emptyList()
+                onValidationChange = { isValid, errors -> // Recibimos la validez y los errores
+                    esPasswordValida = isValid
+                    mensajesErrorPassword = errors
+                }
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -108,7 +112,6 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
                             loginFallido = true
                             Toast.makeText(context, "Login fallido", Toast.LENGTH_SHORT).show()
                         }
-
                     }
                 }
             }
