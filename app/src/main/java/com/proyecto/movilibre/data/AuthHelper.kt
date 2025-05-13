@@ -1,10 +1,10 @@
-package com.proyecto.movilibre
+package com.proyecto.movilibre.data
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import androidx.credentials.Credential
 import androidx.credentials.CredentialManager
 import androidx.credentials.CreatePasswordRequest
 import androidx.credentials.GetCredentialRequest
@@ -17,7 +17,12 @@ import kotlinx.coroutines.launch
 
 class AuthHelper {
 
-    fun loginUser(email: String, password: String, context: Context, onResult: (Boolean, Boolean) -> Unit) {
+    fun loginUser(
+        email: String,
+        password: String,
+        context: Context,
+        onResult: (success: Boolean, isVerified: Boolean) -> Unit
+    ) {
         val auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -29,6 +34,7 @@ class AuthHelper {
                 }
             }
     }
+
 
 
     fun registerUser(
@@ -70,6 +76,7 @@ class AuthHelper {
                     }
                 } else {
                     Log.e("FirebaseAuth", "Error en registro: ", task.exception)
+                    Toast.makeText(context, "Error: ${task.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
                     onResult(false)
                 }
             }

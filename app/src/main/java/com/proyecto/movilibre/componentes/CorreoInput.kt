@@ -13,6 +13,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 
 @Composable
 fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
@@ -27,8 +30,9 @@ fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
             shape = RoundedCornerShape(50),
             value = value,
             onValueChange = { nuevoValor ->
-                onValueChange(nuevoValor) // Llama a la función original para actualizar el valor
-                esCorreoValido = nuevoValor.matches(regexCorreo)
+                val textoSinSaltos = nuevoValor.replace("\n", "")
+                onValueChange(textoSinSaltos) // Actualiza el valor sin saltos de línea
+                esCorreoValido = textoSinSaltos.matches(regexCorreo) // Validación del correo
             },
             label = { Text(stringResource(id = R.string.CorreoHint1)) },
             placeholder = { Text(stringResource(id = R.string.CorreoHint2)) },
@@ -38,6 +42,13 @@ fun CorreoInput(value: String, onValueChange: (String) -> Unit) {
                 .onFocusChanged { focusState ->
                     if (!focusState.isFocused && value.isNotEmpty()) {
                         mostrarSegundoCampo = true
+                    }
+                }
+                .onKeyEvent { keyEvent ->
+                    if (keyEvent.key == Key.Enter) {
+                        true
+                    } else {
+                        false
                     }
                 },
             isError = !esCorreoValido,

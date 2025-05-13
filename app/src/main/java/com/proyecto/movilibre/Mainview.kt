@@ -32,6 +32,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import android.content.pm.PackageManager
 import android.widget.Toast
+import androidx.compose.foundation.isSystemInDarkTheme
+import com.proyecto.movilibre.data.UserPreferences
 
 @Composable
 fun Mainview(navController: NavHostController) {
@@ -39,12 +41,27 @@ fun Mainview(navController: NavHostController) {
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(LatLng(19.4326, -99.1332), 12f) // CDMX
     }
+    val context = LocalContext.current
+    val userPrefs = remember { UserPreferences(context) }
+    val temaOscuro by userPrefs.temaOscuro.collectAsState(initial = false)
+    val mapProperties by remember(temaOscuro) {
+        mutableStateOf(
+            MapProperties(
+                mapStyleOptions = MapStyleOptions.loadRawResourceStyle(
+                    context,
+                    if (temaOscuro) R.raw.map_style_dark else R.raw.map_style_light
+                )
+            )
+        )
+    }
+
 
     Box(modifier = Modifier.fillMaxSize()) {
 
         GoogleMap(
             modifier = Modifier.fillMaxSize(),
-            cameraPositionState = cameraPositionState
+            cameraPositionState = cameraPositionState,
+            properties = mapProperties
         ) {
             Marker(
                 state = MarkerState(position = LatLng(19.4326, -99.1332)),

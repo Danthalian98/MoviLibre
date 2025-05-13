@@ -14,6 +14,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.proyecto.movilibre.R
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 
 @Composable
 fun NombreInput(value: String, onValueChange: (String) -> Unit) {
@@ -28,9 +31,10 @@ fun NombreInput(value: String, onValueChange: (String) -> Unit) {
             shape = RoundedCornerShape(50),
             value = value,
             onValueChange = { nuevoValor ->
-                if (nuevoValor.length <= maxCaracteres && nuevoValor.all { it.isLetter() || it.isWhitespace() }) {
-                    onValueChange(nuevoValor)
-                    esNombreValido = nuevoValor.isNotEmpty()
+                val valorFiltrado = nuevoValor.replace("\n", "") // Elimina saltos de línea
+                if (valorFiltrado.length <= maxCaracteres && valorFiltrado.all { it.isLetter() || it.isWhitespace() }) {
+                    onValueChange(valorFiltrado)
+                    esNombreValido = valorFiltrado.isNotEmpty()
                 }
             },
             label = { Text(stringResource(id = R.string.NombreHint1)) },

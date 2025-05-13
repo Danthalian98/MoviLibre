@@ -15,6 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.proyecto.movilibre.R
 import android.content.Context
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -27,35 +30,43 @@ fun PasswInput(
     var mostrarSegundoCampo by remember { mutableStateOf(false) }
     var passwordVisible by remember { mutableStateOf(false) }
     val longitudMinima = 8
+    val longitudMaxima = 15
     val context = LocalContext.current
 
-    val erroresContrasena: List<String> by remember(value) {
-        derivedStateOf {
-            val errores = mutableListOf<String>()
-            if (value.length < longitudMinima) {
-                errores.add(context.getString(R.string.ErrorContrasenaLongitudMinima, longitudMinima))
-            }
-            if (!value.any { it.isUpperCase() }) {
-                errores.add(context.getString(R.string.ErrorContrasenaMayuscula))
-            }
-            if (!value.any { it.isLowerCase() }) {
-                errores.add(context.getString(R.string.ErrorContrasenaMinuscula))
-            }
-            if (!value.any { it.isDigit() }) {
-                errores.add(context.getString(R.string.ErrorContrasenaNumero))
-            }
-            errores
+    val erroresContrasena: List<String> by rememberUpdatedState(newValue = run {
+        val errores = mutableListOf<String>()
+        if (value.length < longitudMinima || value.length > longitudMaxima) {
+            errores.add(context.getString(R.string.ErrorContrasenaLongitud, longitudMinima, longitudMaxima))
         }
-    }
+        if (!value.any { it.isUpperCase() }) {
+            errores.add(context.getString(R.string.ErrorContrasenaMayuscula))
+        }
+        if (!value.any { it.isLowerCase() }) {
+            errores.add(context.getString(R.string.ErrorContrasenaMinuscula))
+        }
+        if (!value.any { it.isDigit() }) {
+            errores.add(context.getString(R.string.ErrorContrasenaNumero))
+        }
+        if (!value.any { !it.isLetterOrDigit() }) {
+            errores.add(context.getString(R.string.ErrorContrasenaEspecial))
+        }
+        errores
+    })
+
 
     val esContrasenaValida by remember(erroresContrasena) { derivedStateOf { erroresContrasena.isEmpty() } }
+
+    LaunchedEffect(value) {
+        onValidationChange(esContrasenaValida, erroresContrasena)
+    }
 
     Column(modifier = Modifier.padding(8.dp)) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
             value = value,
             onValueChange = { nuevoValor ->
-                onValueChange(nuevoValor)
+                val sinSaltos = nuevoValor.replace("\n", "") // Filtra el Enter
+                onValueChange(sinSaltos)
                 onValidationChange(esContrasenaValida, erroresContrasena)
             },
             label = { Text(stringResource(id = R.string.ContraHint1)) },
@@ -72,7 +83,7 @@ fun PasswInput(
                     )
                 }
             },
-            isError = !esContrasenaValida,
+            isError = value.isNotEmpty() && !esContrasenaValida,
             modifier = Modifier
                 .fillMaxWidth()
                 .onFocusChanged { focusState ->
@@ -83,7 +94,7 @@ fun PasswInput(
         )
 
         // Mostrar errores debajo del campo
-        if (!esContrasenaValida) {
+        if (value.isNotEmpty() && !esContrasenaValida) {
             erroresContrasena.forEach { error ->
                 Text(
                     text = error,

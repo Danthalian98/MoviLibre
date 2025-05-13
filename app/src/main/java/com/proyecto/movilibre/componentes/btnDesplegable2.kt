@@ -7,13 +7,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -23,7 +21,6 @@ import com.google.firebase.ktx.Firebase
 import com.proyecto.movilibre.R
 import com.proyecto.movilibre.data.UserPreferences
 import kotlinx.coroutines.launch
-import com.proyecto.movilibre.AuthHelper
 
 
 @Composable
@@ -206,6 +203,9 @@ fun btnDesplegable2(
 
                     Button(
                         onClick = {
+                            scope.launch {
+                                prefs.setTemaOscuro(false)
+                            }
                             Firebase.auth.signOut()
 
                             navController.navigate("mainv") {

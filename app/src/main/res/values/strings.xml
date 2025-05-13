@@ -28,8 +28,9 @@
     <string name="ErrorNombreVacio">El nombre no puede estar vacío</string>
     <string name="ErrorNombreSoloLetras">Solo se permiten letras y espacios</string>
     <string name="ErrorNombreLongitudMaxima">El nombre no puede tener más de %1$d caracteres</string>
-    <string name="ErrorContrasenaLongitudMinima">La contraseña debe tener al menos %1$d caracteres</string>
-    <string name="ErrorContrasenaMayuscula">La contraseña debe contener al menos una letra mayúscula</string>
-    <string name="ErrorContrasenaMinuscula">La contraseña debe contener al menos una letra minúscula</string>
-    <string name="ErrorContrasenaNumero">La contraseña debe contener al menos un número</string>
+    <string name="ErrorContrasenaLongitud">La contraseña debe tener entre %1$d y %2$d caracteres.</string>
+    <string name="ErrorContrasenaMayuscula">Debe contener al menos una letra mayúscula.</string>
+    <string name="ErrorContrasenaMinuscula">Debe contener al menos una letra minúscula.</string>
+    <string name="ErrorContrasenaNumero">Debe contener al menos un número.</string>
+    <string name="ErrorContrasenaEspecial">Debe contener al menos un carácter especial.</string>
 </resources>
