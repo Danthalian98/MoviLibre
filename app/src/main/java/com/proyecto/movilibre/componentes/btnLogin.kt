@@ -22,9 +22,10 @@ import com.proyecto.movilibre.R
 
 // Composable function for the button
 @Composable
-fun btnLogin(onClick: () -> Unit) {
+fun btnLogin(onClick: () -> Unit, enabled: Boolean = true) {
     Button(
         onClick = onClick,
+        enabled = enabled,
         shape = RoundedCornerShape(50),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary),
         modifier = Modifier
@@ -39,6 +40,7 @@ fun btnLogin(onClick: () -> Unit) {
         )
     }
 }
+
 
 
 // Preview function

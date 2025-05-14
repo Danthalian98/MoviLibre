@@ -15,16 +15,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.proyecto.movilibre.componentes.BtnVolver
 import com.proyecto.movilibre.componentes.btnDesplegable
 
 @Composable
-fun Rutasview(navController: androidx.navigation.NavHostController) {
+fun Rutasview(navController: NavHostController) {
     val rutas = listOf(
-        "Ruta 1" to listOf("U-01", "U-02", "U-03"),
-        "Ruta 2" to listOf("U-04", "U-05"),
-        "Ruta 3" to listOf("U-06", "U-07", "U-08", "U-09")
+        "Ruta C51" to listOf("C51"),
+        "Ruta 27" to listOf("27"),
+        "Ruta 622" to listOf("622")
     )
 
     val colorScheme = MaterialTheme.colorScheme
@@ -34,14 +35,12 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
             .fillMaxSize()
             .background(colorScheme.background)
     ) {
-        // Scrollable content
         Column(
             modifier = Modifier
                 .weight(1f)
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Título
             Text(
                 text = stringResource(id = R.string.title_Rutas),
                 color = colorScheme.onPrimary,
@@ -55,14 +54,12 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            // Rutas desplegables
             rutas.forEach { (nombre, unidades) ->
-                btnDesplegable(tituloRuta = nombre, unidades = unidades)
+                btnDesplegable(tituloRuta = nombre, unidades = unidades, navController = navController)
                 Spacer(modifier = Modifier.height(16.dp))
             }
         }
 
-        // Botón fijo abajo
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -78,10 +75,4 @@ fun Rutasview(navController: androidx.navigation.NavHostController) {
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Rutasview() {
-    Rutasview(navController = rememberNavController())
 }

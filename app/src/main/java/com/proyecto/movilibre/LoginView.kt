@@ -84,10 +84,9 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        if (isLoading) {
-            CircularProgressIndicator(color = colorScheme.primary)
-        } else {
-            btnLogin {
+        btnLogin(
+            enabled = !isLoading && correo.isNotEmpty() && password.isNotEmpty(),
+            onClick = {
                 isLoading = true
                 authHelper.loginUser(correo, password, context) { success, isVerified ->
                     isLoading = false
@@ -106,7 +105,13 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
                     }
                 }
             }
+        )
+
+        if (isLoading) {
+            Spacer(modifier = Modifier.height(16.dp))
+            CircularProgressIndicator(color = colorScheme.primary)
         }
+
 
         Spacer(modifier = Modifier.height(6.dp))
 

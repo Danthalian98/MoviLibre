@@ -1,6 +1,8 @@
 
 package com.proyecto.movilibre.componentes
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -14,12 +16,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.proyecto.movilibre.R
 
 @Composable
 fun btnDesplegable(
     tituloRuta: String,
-    unidades: List<String>
+    unidades: List<String>,
+    navController: NavController
 ) {
     var expanded by remember { mutableStateOf(false) }
     val colorScheme = MaterialTheme.colorScheme
@@ -28,8 +32,7 @@ fun btnDesplegable(
         Button(
             onClick = { expanded = !expanded },
             modifier = Modifier
-                .padding(horizontal = 8.dp)
-                .padding(bottom = 12.dp)
+                .padding(horizontal = 8.dp, vertical = 6.dp)
                 .fillMaxWidth()
                 .height(60.dp)
                 .clip(RoundedCornerShape(50)),
@@ -42,13 +45,9 @@ fun btnDesplegable(
                     .fillMaxSize()
                     .padding(horizontal = 20.dp)
             ) {
-                Text(
-                    text = tituloRuta,
-                    color = colorScheme.onSurface,
-                    fontSize = 22.sp
-                )
+                Text(text = tituloRuta, color = colorScheme.onSurface, fontSize = 22.sp)
                 Icon(
-                    painter = painterResource(id = if (expanded) R.drawable.ic_arrow_drop_down else R.drawable.ic_arrow_drop_up),
+                    painter = painterResource(id = if (expanded) R.drawable.ic_arrow_drop_up else R.drawable.ic_arrow_drop_down),
                     contentDescription = null,
                     tint = colorScheme.onSurface
                 )
@@ -58,27 +57,25 @@ fun btnDesplegable(
         if (expanded) {
             Column {
                 unidades.forEach { unidad ->
-                    Text(
-                        text = unidad,
+                    TextButton(
+                        onClick = {
+                            navController.previousBackStackEntry?.savedStateHandle?.set("rutaSeleccionada", unidad)
+                            navController.popBackStack()
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 32.dp)
-                            .padding(12.dp),
-                        color = colorScheme.onBackground,
-                        fontSize = 18.sp
-                    )
+                            .border(
+                                width = 2.dp,
+                                color = colorScheme.tertiary, // Color del margen
+                                shape = RoundedCornerShape(50)
+                            )
+                            .clip(RoundedCornerShape(50))
+                    ) {
+                        Text(text = unidad, fontSize = 20.sp, color = colorScheme.onBackground)
+                    }
                 }
             }
         }
     }
-}
-
-// Preview function
-@Preview
-@Composable
-fun PreviewbtnDesplegable() {
-    btnDesplegable(
-        tituloRuta = TODO(),
-        unidades = TODO()
-    )
 }
