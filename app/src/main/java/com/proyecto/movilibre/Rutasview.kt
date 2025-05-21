@@ -23,7 +23,7 @@ import com.proyecto.movilibre.componentes.btnDesplegable
 @Composable
 fun Rutasview(navController: NavHostController) {
     val rutas = listOf(
-        "Ruta C51" to listOf("C51"),
+        "Ruta C54" to listOf("C54"),
         "Ruta 27" to listOf("27"),
         "Ruta 622" to listOf("622")
     )

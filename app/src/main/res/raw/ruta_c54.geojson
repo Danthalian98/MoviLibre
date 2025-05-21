@@ -1,0 +1,1311 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route": "C54 - Sample"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-103.25276140154331, 20.632555133878412],
+          [-103.25314793516033, 20.632420160636954],
+          [-103.25387882665713, 20.632424835261972],
+          [-103.25524312562864, 20.631777358064966],
+          [-103.25574544199523, 20.631705552233115],
+          [-103.2583700120688, 20.63213742145369],
+          [-103.2588775162203, 20.632162881997246],
+          [-103.25953924175774, 20.632127513849113],
+          [-103.26095912815187, 20.63184734094648],
+          [-103.26124214829346, 20.63172602857341],
+          [-103.26210911566852, 20.63155978004626],
+          [-103.26232746110539, 20.631432646979746],
+          [-103.26261735863687, 20.631517280068365],
+          [-103.26551755752196, 20.631536330118948],
+          [-103.2657710316422, 20.631428428575305],
+          [-103.2659281469683, 20.631181911102654],
+          [-103.26591960475336, 20.630976210605176],
+          [-103.26605814427748, 20.630789738722232],
+          [-103.26631659172423, 20.630765527267176],
+          [-103.26643302666896, 20.630876809201673],
+          [-103.26669940706793, 20.631255456360734],
+          [-103.26829277902638, 20.632075961060906],
+          [-103.26948298560612, 20.632573846038085],
+          [-103.2705466520681, 20.63316397803426],
+          [-103.27138503533638, 20.63374814206611],
+          [-103.27210801568792, 20.634330189907743],
+          [-103.2727551533654, 20.63496432443958],
+          [-103.27340381595685, 20.635696239529068],
+          [-103.27417584064672, 20.63679471185175],
+          [-103.2748753480499, 20.637865256619023],
+          [-103.27587284785365, 20.639375183233867],
+          [-103.27672951161318, 20.640566650397687],
+          [-103.2774687088988, 20.64131962140668],
+          [-103.27835612042824, 20.642078533519538],
+          [-103.27892583987484, 20.64251370661455],
+          [-103.27972932868285, 20.643026804961167],
+          [-103.28072118081705, 20.643555142427488],
+          [-103.2809693419738, 20.64363772137338],
+          [-103.2809269955343, 20.643819837636116],
+          [-103.28006347018476, 20.647243422958145],
+          [-103.27989535444317, 20.647532900981215],
+          [-103.27965406255812, 20.647840939400837],
+          [-103.27946104383726, 20.648251973056674],
+          [-103.27903201595225, 20.65068110671241],
+          [-103.27994004459322, 20.650800054865115],
+          [-103.28071215415146, 20.650995807718758],
+          [-103.28244603238085, 20.651244335634985],
+          [-103.28614823256092, 20.65176966541081],
+          [-103.2897864003881, 20.652273886942538],
+          [-103.29335048307509, 20.65271008708222],
+          [-103.29386140204372, 20.652811601480117],
+          [-103.2944615179837, 20.653002237021205],
+          [-103.2957309060655, 20.653489821656837],
+          [-103.29703892259553, 20.653957405978296],
+          [-103.30067718126054, 20.65530177331325],
+          [-103.30249631059304, 20.65597395698073],
+          [-103.30435279287337, 20.656695817324124],
+          [-103.3052460015039, 20.6570078327318],
+          [-103.3062092751537, 20.657417677667517],
+          [-103.30805822341628, 20.65820560258693],
+          [-103.30898269754756, 20.658599565046636],
+          [-103.31140220226621, 20.65964440068588],
+          [-103.31290841818046, 20.660249925192947],
+          [-103.31642962663281, 20.661372506715637],
+          [-103.31993873259854, 20.662590178602997],
+          [-103.32340667741411, 20.663816401404866],
+          [-103.32514521856487, 20.664439516477945],
+          [-103.3271010954102, 20.665125990198064],
+          [-103.33052305961918, 20.666339062512723],
+          [-103.3322309369099, 20.666961197072766],
+          [-103.33393298580432, 20.66760791892107],
+          [-103.33563386864138, 20.668244467596097],
+          [-103.33731766892822, 20.66889681178817],
+          [-103.33901241139273, 20.66952784644365],
+          [-103.34085030972463, 20.670189742335815],
+          [-103.34051291635399, 20.67133288588237],
+          [-103.34140969735675, 20.671630744145265],
+          [-103.34236265960209, 20.672118328406455],
+          [-103.34312627323234, 20.67249412401498],
+          [-103.34329162656289, 20.672285887532166],
+          [-103.3448198787942, 20.672738456363327],
+          [-103.34519159954405, 20.672856338172167],
+          [-103.34551265009459, 20.67288985904126],
+          [-103.34900074647912, 20.672832978093048],
+          [-103.35075371218402, 20.672782074988074],
+          [-103.35249202411686, 20.672757837143884],
+          [-103.35243261084942, 20.674229053275887],
+          [-103.3523412518171, 20.67573475528113],
+          [-103.35233585280416, 20.67648387852961],
+          [-103.35235675853667, 20.67704930172451],
+          [-103.35241787321868, 20.67741982612832],
+          [-103.35236702172615, 20.678699560290106],
+          [-103.36019706366176, 20.678647426649167],
+          [-103.36394004479043, 20.678576789977257],
+          [-103.36563700108005, 20.678692217907084],
+          [-103.36732737980746, 20.678797670439046],
+          [-103.3672397286593, 20.68170551893003],
+          [-103.3671352825027, 20.68427342787044],
+          [-103.36700503331322, 20.68704528385343],
+          [-103.36685854536017, 20.68983054007712],
+          [-103.37273560833306, 20.689809005165067],
+          [-103.37691496784137, 20.689905833993745],
+          [-103.37730479242092, 20.690123112453357],
+          [-103.37742853422091, 20.69015039667484],
+          [-103.37853332904481, 20.690282998045845],
+          [-103.37935084888538, 20.69040364722315],
+          [-103.38009125834418, 20.69043285943973],
+          [-103.38344496931111, 20.69098710124165],
+          [-103.3867922481279, 20.69154950401996],
+          [-103.38651244292798, 20.69305177730998],
+          [-103.38641248653423, 20.693703877315315],
+          [-103.38639610883732, 20.69467016318321],
+          [-103.38638461791355, 20.697797419863097],
+          [-103.3887293822987, 20.697340933883133],
+          [-103.39103447441205, 20.696785128925235],
+          [-103.39570718004641, 20.69568720993915],
+          [-103.39585161282427, 20.695646423045574],
+          [-103.39595882554663, 20.69552726138413],
+          [-103.39615204099273, 20.695523759863875],
+          [-103.39632847417582, 20.69564769048769],
+          [-103.40041485706128, 20.694678115977176],
+          [-103.4024187614341, 20.694191006049934],
+          [-103.40350030330004, 20.69369946794325],
+          [-103.40448966745275, 20.69316876046625],
+          [-103.40495690582613, 20.692777399616574],
+          [-103.40554635041124, 20.69202505562492],
+          [-103.40590968135747, 20.691874028092478],
+          [-103.4066257955216, 20.691831724559382],
+          [-103.40875480409144, 20.691850931126147],
+          [-103.40934178249566, 20.6917735382993],
+          [-103.40990196779799, 20.691779029208977],
+          [-103.41179605500875, 20.69180048892681],
+          [-103.41241916927352, 20.6916673431105],
+          [-103.41315564234178, 20.691619690069516],
+          [-103.41372261579309, 20.69153826133518],
+          [-103.41426989055765, 20.691497272568803],
+          [-103.41469388490079, 20.691539256652167],
+          [-103.41534204379467, 20.691729194055497],
+          [-103.41541978779189, 20.69515009832996],
+          [-103.41545551311921, 20.69559006612561],
+          [-103.41575609247039, 20.696379035208583],
+          [-103.41596559373565, 20.697332001263767],
+          [-103.41609977840191, 20.697962416744012],
+          [-103.41612460659503, 20.698458748207667],
+          [-103.41600001901439, 20.699423731106734],
+          [-103.41573800839457, 20.700630013979307],
+          [-103.41559640628131, 20.70124340003626],
+          [-103.41540625129747, 20.701777969170735],
+          [-103.41405020635365, 20.70446015875028],
+          [-103.41336322941405, 20.705830276374236],
+          [-103.41282503934069, 20.706658376792976],
+          [-103.41218944018799, 20.707320222221995],
+          [-103.41022078562533, 20.70851255809446],
+          [-103.40897298657757, 20.709201302265107],
+          [-103.40775262034076, 20.709699423797154],
+          [-103.40746535958773, 20.70986791264714],
+          [-103.407580247639, 20.710303626201902],
+          [-103.41334397810712, 20.717745552339842],
+          [-103.41609412426943, 20.72127570974114],
+          [-103.41838994114987, 20.724290145810336],
+          [-103.41869662415962, 20.72459005714154],
+          [-103.41912548158369, 20.72473420273164],
+          [-103.41956079096379, 20.724744326552837],
+          [-103.42016382097823, 20.724658064267132],
+          [-103.42033939967594, 20.724441253364834],
+          [-103.4203330644424, 20.724232072987427],
+          [-103.42017746181314, 20.724077715572385],
+          [-103.41983215279538, 20.72403628864316],
+          [-103.41874407623528, 20.72498406261098],
+          [-103.4176386663493, 20.72599156001753],
+          [-103.41759340731741, 20.726203003431685],
+          [-103.41688823619874, 20.726859693686606],
+          [-103.41682980590497, 20.726985518013755],
+          [-103.41562846750521, 20.728042849464817],
+          [-103.41412605022293, 20.72939660030687],
+          [-103.41265194880275, 20.730751305381304],
+          [-103.41271993408508, 20.730892946772663],
+          [-103.42218279075934, 20.730118777592327],
+          [-103.42435814597596, 20.729950603045445],
+          [-103.42827877846392, 20.729892284474676],
+          [-103.43059295423315, 20.729860549103],
+          [-103.43078626333977, 20.729758129354032],
+          [-103.43090607415088, 20.729622153882314],
+          [-103.43094459074877, 20.72908665458924]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Ceti Tonalá"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.25276140154331, 20.632555133878412]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Circuito Loma Norte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.25387882665713, 20.632424835261972]
+      }
+    },
+    {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Protección Civil Tonalá"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.25524312562864, 20.631777358064966]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Loma Dorada Norte"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.25574544199523, 20.631705552233115]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Chulavista"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.2583700120688, 20.63213742145369]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Av. Central"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.25953924175774, 20.632127513849113]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Plaza Lomas"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.26095912815187, 20.63184734094648]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Río Nilo"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.26261735863687, 20.631517280068365]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Siapa"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.26551755752196, 20.631536330118948]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Circuito Loma Norte"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.26669940706793, 20.631255456360734]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Arcos De Loma Dorada"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.26829277902638, 20.632075961060906]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Nogal"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.26948298560612, 20.632573846038085]
+    }
+  },
+{
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Manuel Román Alatorre"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.2705466520681, 20.63316397803426]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Mercedes Celis"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.2727551533654, 20.63496432443958]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Ana María Sánchez"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.27417584064672, 20.63679471185175]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Francisco Huízar"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.27587284785365, 20.639375183233867]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "María Mares"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.27672951161318, 20.640566650397687]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "María Benítez"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.27835612042824, 20.642078533519538]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Rubén Rodríguez"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.28072118081705, 20.643555142427488]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Francisco Cárdenas Larios"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.27946104383726, 20.648251973056674]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Ricardo Palmerín"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.27903201595225, 20.65068110671241]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Manuel María Ponce"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.28071215415146, 20.650995807718758]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Cenobio Paniagua"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.28244603238085, 20.651244335634985]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Parque San Rafael"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.28614823256092, 20.65176966541081]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "San Jacinto"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.2897864003881, 20.652273886942538]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Del Parque"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.29335048307509, 20.65271008708222]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Jesús Delgadillo Araujo"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.2944615179837, 20.653002237021205]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Chamizal"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.2957309060655, 20.653489821656837]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Ejido"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.29703892259553, 20.653957405978296]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Ramón López Velarde"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.30067718126054, 20.65530177331325]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Francisco Márquez"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.30249631059304, 20.65597395698073]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Hernando De Martell"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.30435279287337, 20.656695817324124]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Dr. Salvador García Diego"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.3052460015039, 20.6570078327318]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "General Carlos Fuero"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.3062092751537, 20.657417677667517]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Motolinía"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.30805822341628, 20.65820560258693]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Fray Antonio De Segovia"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.30898269754756, 20.658599565046636]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Mota Padilla"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.31140220226621, 20.65964440068588]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Édison"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.31290841818046, 20.660249925192947]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Comonfort"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.31642962663281, 20.661372506715637]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Pedro Catani"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.31993873259854, 20.662590178602997]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Corregidora"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.32340667741411, 20.663816401404866]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Dr. Enrique Pérez Arce"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.32514521856487, 20.664439516477945]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Constancia"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.3271010954102, 20.665125990198064]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Calzada Del Ejército"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.33052305961918, 20.666339062512723]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Francisco Silva Romero"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.3322309369099, 20.666961197072766]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "José Luis Verdía"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.33393298580432, 20.66760791892107]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Clavel"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.33563386864138, 20.668244467596097]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Analco"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.33731766892822, 20.66889681178817]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "5 De Mayo"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.33901241139273, 20.66952784644365]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Insurgentes"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.34085030972463, 20.670189742335815]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "20 De Noviembre"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.34051291635399, 20.67133288588237]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Calzada Independencia Sur"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.34236265960209, 20.672118328406455]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Maestranza"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.34312627323234, 20.67249412401498]
+    }
+  },
+  {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Ramón Corona"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.34551265009459, 20.67288985904126]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Colón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.34900074647912, 20.672832978093048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Ocampo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.35075371218402, 20.672782074988074]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Enrique González Martínez"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.35249202411686, 20.672757837143884]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "López Cotilla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.35243261084942, 20.674229053275887]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "El Carmen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.3523412518171, 20.67573475528113]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Morelos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.35233585280416, 20.67648387852961]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Mariano de la Bárcena"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.35241787321868, 20.67741982612832]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Mezquitán"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.35236702172615, 20.678699560290106]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Federalismo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.36019706366176, 20.678647426649167]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Jesús"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.36394004479043, 20.678576789977257]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Cruz Verde"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.36563700108005, 20.678692217907084]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Enrique Díaz de León"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.36732737980746, 20.678797670439046]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Gregorio Dávila"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.3672397286593, 20.68170551893003]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Ignacio Ramírez"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.3671352825027, 20.68427342787044]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "José Clemente Orozco"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.36700503331322, 20.68704528385343]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Chapultepec"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.36685854536017, 20.68983054007712]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Calle Garibaldi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.37273560833306, 20.689809005165067]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Calle Pedro Antonio Buzeta, 355"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.37691496784137, 20.689905833993745]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Calle I. Herrera Y Cairo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.37853332904481, 20.690282998045845]
+      }
+    },
+{
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Manuel Acuña"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.38009125834418, 20.69043285943973]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Hospital"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.38344496931111, 20.69098710124165]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Gral. Eulogio Parra"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.3867922481279, 20.69154950401996]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Arista"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.38639610883732, 20.69467016318321]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Pedro Antonio Buzeta"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.38638461791355, 20.697797419863097]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Alfredo R. Plascencia"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.3887293822987, 20.697340933883133]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Américas"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.39103447441205, 20.696785128925235]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Agustín de la Rosa"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.39570718004641, 20.69568720993915]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "López Mateos Norte"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.40041485706128, 20.694678115977176]
+    }
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "stop": true,
+      "name": "Ontario"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-103.4024187614341, 20.694191006049934]
+    }
+  },
+  {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Rubén Darío"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.4066257955216, 20.691831724559382]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Milán"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.40990196779799, 20.691779029208977]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Terranova"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41315564234178, 20.691619690069516]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Nueva Escocia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41534204379467, 20.691729194055497]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Circuito Madrigal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41541978779189, 20.69515009832996]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Bajada De Las Águilas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41612460659503, 20.698458748207667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Bugambilias"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41540625129747, 20.701777969170735]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Circuito Madrigal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41405020635365, 20.70446015875028]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Boulevard Puerta de Hierro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41022078562533, 20.70851255809446]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Patria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.407580247639, 20.710303626201902]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Puerta De Hierro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41334397810712, 20.717745552339842]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Plaza Acueducto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41609412426943, 20.72127570974114]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Santa Margarita"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41838994114987, 20.724290145810336]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Av. de los Cerezos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41759340731741, 20.726203003431685]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Acueducto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.41271993408508, 20.730892946772663]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Federalistas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.42218279075934, 20.730118777592327]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Domingo González Maxemin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.42827877846392, 20.729892284474676]
+      }
+    },
+     {
+      "type": "Feature",
+      "properties": {
+        "stop": true,
+        "name": "Juan Cayetano Portugal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-103.43094459074877, 20.72908665458924]
+      }
+    }
+  ]
+}

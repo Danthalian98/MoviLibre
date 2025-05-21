@@ -2,6 +2,7 @@ package com.proyecto.movilibre
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Bundle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -19,47 +20,36 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.*
-import com.google.maps.android.compose.*
-import com.proyecto.movilibre.data.UserPreferences
-import com.proyecto.movilibre.util.rutasMap
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
+import com.proyecto.movilibre.data.UserPreferences
+import com.proyecto.movilibre.util.cargarGeoJson
+import androidx.compose.ui.viewinterop.AndroidView
+
 
 @Composable
 fun Mainview(navController: NavHostController) {
     val context = LocalContext.current
     val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
-    val cameraPositionState = rememberCameraPositionState()
-    var userLocation by remember { mutableStateOf<LatLng?>(null) }
     val userPrefs = remember { UserPreferences(context) }
     val temaOscuro by userPrefs.temaOscuro.collectAsState(initial = false)
+    var userLocation by remember { mutableStateOf<LatLng?>(null) }
+    val googleMapRef = remember { mutableStateOf<GoogleMap?>(null) }
 
-    val mapProperties by remember(temaOscuro) {
-        mutableStateOf(
-            MapProperties(
-                mapStyleOptions = MapStyleOptions.loadRawResourceStyle(
-                    context,
-                    if (temaOscuro) R.raw.map_style_dark else R.raw.map_style_light
-                ),
-                isMyLocationEnabled = true
-            )
-        )
-    }
 
-    // Obtener ruta seleccionada desde SavedStateHandle
     val selectedRuta = navController.currentBackStackEntry
         ?.savedStateHandle
         ?.getStateFlow("rutaSeleccionada", "")
         ?.collectAsState(initial = "")
 
-    // Permisos
     val locationPermissionGranted = remember { mutableStateOf(false) }
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
@@ -68,9 +58,7 @@ fun Mainview(navController: NavHostController) {
         if (isGranted) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 location?.let {
-                    val latLng = LatLng(it.latitude, it.longitude)
-                    userLocation = latLng
-                    cameraPositionState.move(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+                    userLocation = LatLng(it.latitude, it.longitude)
                 }
             }
         }
@@ -82,9 +70,7 @@ fun Mainview(navController: NavHostController) {
             locationPermissionGranted.value = true
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 location?.let {
-                    val latLng = LatLng(it.latitude, it.longitude)
-                    userLocation = latLng
-                    cameraPositionState.move(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+                    userLocation = LatLng(it.latitude, it.longitude)
                 }
             }
         } else {
@@ -93,28 +79,41 @@ fun Mainview(navController: NavHostController) {
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        GoogleMap(
-            modifier = Modifier.fillMaxSize(),
-            cameraPositionState = cameraPositionState,
-            properties = mapProperties
-        ) {
-            userLocation?.let {
-                Marker(
-                    state = MarkerState(position = it),
-                    title = "Estás aquí",
-                    snippet = "Tu ubicación actual"
-                )
-            }
+        AndroidView(
+            factory = { ctx ->
+                val mapView = MapView(ctx)
+                mapView.onCreate(Bundle())
+                mapView.onResume()
 
-            // Dibujar ruta seleccionada
-            val ruta = selectedRuta?.value
-            val puntos = rutasMap[ruta]
-            puntos?.let {
-                Polyline(points = it, color = MaterialTheme.colorScheme.secondary, width = 10f)
-            }
-        }
+                mapView.getMapAsync { map ->
+                    googleMapRef.value = map
+                    map.setMapStyle(
+                        MapStyleOptions.loadRawResourceStyle(
+                            context,
+                            if (temaOscuro) R.raw.map_style_dark else R.raw.map_style_light
+                        )
+                    )
 
-        // UI adicional encima del mapa
+                    if (locationPermissionGranted.value) {
+                        map.isMyLocationEnabled = true
+                    }
+
+                    userLocation?.let {
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(it, 15f))
+                    }
+
+                    // Cargar GeoJSON de ruta seleccionada
+                    if (selectedRuta?.value == "C54") {
+                        cargarGeoJson(context, map, R.raw.ruta_c54)
+                    }
+                }
+
+                mapView
+            },
+            modifier = Modifier.fillMaxSize()
+        )
+
+        // UI adicional (botones y tarjetas)
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -214,11 +213,11 @@ fun Mainview(navController: NavHostController) {
                 }
             }
         }
-    }
-}
+        LaunchedEffect(userLocation) {
+            userLocation?.let {
+                googleMapRef.value?.animateCamera(CameraUpdateFactory.newLatLngZoom(it, 15f))
+            }
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewMainview() {
-    Mainview(navController = rememberNavController())
+    }
 }

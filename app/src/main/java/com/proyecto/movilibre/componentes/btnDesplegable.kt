@@ -47,7 +47,7 @@ fun btnDesplegable(
             ) {
                 Text(text = tituloRuta, color = colorScheme.onSurface, fontSize = 22.sp)
                 Icon(
-                    painter = painterResource(id = if (expanded) R.drawable.ic_arrow_drop_up else R.drawable.ic_arrow_drop_down),
+                    painter = painterResource(id = if (!expanded) R.drawable.ic_arrow_drop_up else R.drawable.ic_arrow_drop_down),
                     contentDescription = null,
                     tint = colorScheme.onSurface
                 )

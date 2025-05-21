@@ -50,7 +50,6 @@ class AuthHelper {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // ✅ Enviar verificación de correo
                     auth.currentUser?.sendEmailVerification()
 
                     val userId = auth.currentUser?.uid
