@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MoviLibre</string>
+    <string name="gmaps_key">AIzaSyAC9nICJVlbBsqJVIP1B-Zvta0lvLz02k8</string>
+
     <!-- ...Titulos -->
     <string name="title_Ajustes">Ajustes</string>
     <string name="title_Login">Iniciar Sesión</string>

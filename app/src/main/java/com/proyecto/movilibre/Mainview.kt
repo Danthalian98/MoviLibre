@@ -33,6 +33,9 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.proyecto.movilibre.data.UserPreferences
 import com.proyecto.movilibre.util.cargarGeoJson
 import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.gms.maps.model.MarkerOptions
+import com.proyecto.movilibre.util.mostrarRutaCaminando
+import com.google.android.gms.maps.model.Polyline // Import Polyline for the walking route
 
 
 @Composable
@@ -43,7 +46,7 @@ fun Mainview(navController: NavHostController) {
     val temaOscuro by userPrefs.temaOscuro.collectAsState(initial = false)
     var userLocation by remember { mutableStateOf<LatLng?>(null) }
     val googleMapRef = remember { mutableStateOf<GoogleMap?>(null) }
-
+    val coroutineScope = rememberCoroutineScope()
 
     val selectedRuta = navController.currentBackStackEntry
         ?.savedStateHandle
@@ -51,6 +54,12 @@ fun Mainview(navController: NavHostController) {
         ?.collectAsState(initial = "")
 
     val locationPermissionGranted = remember { mutableStateOf(false) }
+    var walkingRouteTime by remember { mutableStateOf<String>("Tiempo a pie: N/A") } // Estado para mostrar el tiempo a pie
+
+    // Nuevo estado para la parada de autobús seleccionada
+    var selectedBusStopDestination by remember { mutableStateOf<LatLng?>(null) }
+
+
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
     ) { isGranted ->
@@ -64,7 +73,7 @@ fun Mainview(navController: NavHostController) {
         }
     }
 
-    LaunchedEffect(true) {
+    LaunchedEffect(Unit) {
         val permission = Manifest.permission.ACCESS_FINE_LOCATION
         if (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED) {
             locationPermissionGranted.value = true
@@ -84,7 +93,6 @@ fun Mainview(navController: NavHostController) {
                 val mapView = MapView(ctx)
                 mapView.onCreate(Bundle())
                 mapView.onResume()
-
                 mapView.getMapAsync { map ->
                     googleMapRef.value = map
                     map.setMapStyle(
@@ -97,23 +105,66 @@ fun Mainview(navController: NavHostController) {
                     if (locationPermissionGranted.value) {
                         map.isMyLocationEnabled = true
                     }
-
-                    userLocation?.let {
-                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(it, 15f))
-                    }
-
-                    // Cargar GeoJSON de ruta seleccionada
-                    if (selectedRuta?.value == "C54") {
-                        cargarGeoJson(context, map, R.raw.ruta_c54)
-                    }
                 }
-
                 mapView
             },
             modifier = Modifier.fillMaxSize()
         )
 
-        // UI adicional (botones y tarjetas)
+        // Este LaunchedEffect ahora gestiona la lógica de dibujo del mapa
+        LaunchedEffect(userLocation, googleMapRef.value, selectedRuta?.value, selectedBusStopDestination) {
+            val map = googleMapRef.value
+            if (map != null && userLocation != null) {
+                // Limpiar el mapa siempre antes de dibujar nuevos elementos
+                map.clear()
+
+                // Añadir marcador de la ubicación del usuario
+                map.addMarker(MarkerOptions().position(userLocation!!).title("Tu ubicación"))
+
+                // Cargar la ruta de autobús en función de la selección
+                // Pasa el callback para actualizar selectedBusStopDestination
+                if (selectedRuta?.value == "C54") {
+                    cargarGeoJson(
+                        context = context,
+                        map = map,
+                        geoJsonRawResId = R.raw.ruta_c54,
+                        userLocation = userLocation,
+                        coroutineScope = coroutineScope,
+                        onWalkingRouteInfo = { info ->
+                            walkingRouteTime = info
+                        },
+                        onBusStopSelected = { latLng ->
+                            selectedBusStopDestination = latLng
+                        }
+                    )
+                }
+
+                // Si hay una parada de autobús seleccionada, dibujar la ruta a pie
+                selectedBusStopDestination?.let { destination ->
+                    mostrarRutaCaminando(
+                        context = context,
+                        map = map,
+                        origin = userLocation!!,
+                        destination = destination,
+                        coroutineScope = coroutineScope,
+                        onRouteInfo = { info ->
+                            walkingRouteTime = info
+                        }
+                    )
+                }
+
+                // Animar la cámara a la ubicación del usuario (o centrar en la ruta si es más relevante)
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation!!, 15f))
+
+            } else if (map != null && userLocation == null && locationPermissionGranted.value) {
+                fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                    location?.let {
+                        userLocation = LatLng(it.latitude, it.longitude)
+                    }
+                }
+            }
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -197,6 +248,24 @@ fun Mainview(navController: NavHostController) {
                 }
             }
 
+            Spacer(modifier = Modifier.height(8.dp))
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 8.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(8.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = walkingRouteTime, // Muestra el estado del tiempo a pie
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+            }
+
             Spacer(modifier = Modifier.height(16.dp))
 
             Card(
@@ -213,11 +282,5 @@ fun Mainview(navController: NavHostController) {
                 }
             }
         }
-        LaunchedEffect(userLocation) {
-            userLocation?.let {
-                googleMapRef.value?.animateCamera(CameraUpdateFactory.newLatLngZoom(it, 15f))
-            }
-        }
-
     }
 }
