@@ -1,0 +1,1625 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route": "C64 - La Valenciana / Sta. María del Pueblito"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+
+            [-103.43439364058958, 20.68139576651177],
+            [-103.42843617429142, 20.680565809068327],
+            [-103.42786808559535, 20.684208444452523],
+            [-103.42705433409004, 20.688183949771243],
+            [-103.42463632510224, 20.687485627803753],
+            [-103.42003610225613, 20.687965246011004],
+            [-103.41748444595498, 20.69009082269521],
+            [-103.414380678632, 20.691646312080493],
+            [-103.4126763777321, 20.691633350107836],
+            [-103.4097409518921, 20.691777524090654],
+            [-103.40554342499448, 20.69201149137882],
+            [-103.40305758542816, 20.693895557202154],
+            [-103.39916771266563, 20.694982918667534],
+            [-103.39582087360589, 20.695853956450975],
+            [-103.39192025677576, 20.696864232255493],
+            [-103.38858278425352, 20.697671666199568],
+            [-103.38471591597666, 20.698080765649706],
+            [-103.38114827160706, 20.697370226076785],
+            [-103.37765513339961, 20.6983850376201],
+            [-103.37476649284989, 20.699547728607214],
+            [-103.37306323214793, 20.696414897403486],
+            [-103.37009403800992, 20.697125444642538],
+            [-103.36799948649805, 20.69396026686701],
+            [-103.36446636664338, 20.693475795958378],
+            [-103.36034587015448, 20.693389669640027],
+            [-103.35691633041702, 20.693303542075284],
+            [-103.35308399902296, 20.693163583783075],
+            [-103.35035647786613, 20.694261718866883],
+            [-103.34793895642548, 20.695746877311706],
+            [-103.34717939544353, 20.69355062092032],
+            [-103.34360113067132, 20.693128673265775],
+            [-103.34024012695676, 20.69331543033796],
+            [-103.3369486995028, 20.69509182043059],
+            [-103.33343859485285, 20.694736538655633],
+            [-103.33041185295791, 20.6932292975729],
+            [-103.32695929361557, 20.691592845589625],
+            [-103.32389688620067, 20.690057276596434],
+            [-103.32043282555671, 20.68910983835829],
+            [-103.31717590415218, 20.689357467828103],
+            [-103.31375786939954, 20.690778618897085],
+            [-103.30971670415447, 20.691672526875294],
+            [-103.3066439276075, 20.691005021998365],
+            [-103.30282309491255, 20.69033751365596],
+            [-103.29833476861772, 20.68950850880863],
+            [-103.29511238396198, 20.68880869627452],
+            [-103.29441035794743, 20.69143566694015],
+            [-103.2944333843902, 20.693771915569386],
+            [-103.29440973847441, 20.697315278912086],
+            [-103.29362947100867, 20.69820495334112],
+            [-103.29292817522155, 20.697946914086657],
+            [-103.29211106972737, 20.69769930210215],
+            [-103.29044233315483, 20.697193311137738],
+            [-103.28771542202757, 20.696299755282098],
+            [-103.28684650328455, 20.698795179527664],
+            [-103.28653577302616, 20.69958107136081],
+            [-103.28419161773377, 20.699494940044076],
+            [-103.28414558362144, 20.699925564223392],
+            [-103.28387508104427, 20.70197926767925],
+            [-103.28315033259231, 20.70298536148114],
+            [-103.28148930651538, 20.70336991751222],
+            [-103.27876451248514, 20.700855889361364],
+            [-103.27669297777884, 20.69897190738733],
+            [-103.27485161327259, 20.697324752635836],
+            [-103.27275743076365, 20.69541419029187],
+            [-103.26740596660615, 20.69232434386788],
+            [-103.26405680754765, 20.690442820481763],
+            [-103.26371155350762, 20.689678413414583],
+            [-103.26374607909177, 20.688268019389838],
+            [-103.2636885364513, 20.687019109919817],
+            [-103.26365779064366, 20.68588648894699],
+            [-103.26432528527275, 20.68587572236126],
+            [-103.2641526573513, 20.684626793199982],
+            [-103.2634731572503, 20.683323319295],
+            [-103.26320846511275, 20.6826234798707],
+            [-103.26267907282097, 20.682591179415326],
+            [-103.26257831399776, 20.681583046369127],
+            [-103.26234814343618, 20.680258713005998],
+            [-103.26155016232282, 20.680114533810098],
+            [-103.26019215600869, 20.679963795803957],
+            [-103.2590528117283, 20.679888426744412],
+            [-103.25897225203148, 20.67888709140449],
+            [-103.2589032087835, 20.677961120271064],
+            [-103.25877661497472, 20.676992073870935],
+            [-103.25760274510982, 20.677304322830707],
+            [-103.25756823079467, 20.675549263061583],
+            [-103.25745315594664, 20.67454790156681],
+            [-103.2569007588384, 20.67291125171242],
+            [-103.25671662238915, 20.672254432426328],
+            [-103.25634836370844, 20.670983860772978],
+            [-103.25548830728731, 20.669545301343803],
+            [-103.2540957884477, 20.667488646571385],
+            [-103.25330170000984, 20.666271870075448],
+            [-103.25192067681489, 20.664279774384653],
+            [-103.25157542097239, 20.66323526335499],
+            [-103.25325566660601, 20.66234150089943],
+            [-103.25296795340395, 20.661792318885702],
+            [-103.25292191929164, 20.660984694671455],
+            [-103.2530600233931, 20.65898176806472],
+            [-103.25079284335979, 20.658917157090087],
+            [-103.25083888771128, 20.657896170726914],
+            [-103.25097699004823, 20.65653932480562],
+            [-103.25119565408437, 20.65495632240217],
+            [-103.25144998272194, 20.65293457653543],
+            [-103.24854036347283, 20.65341850392079],
+            [-103.24796473498682, 20.653889807480866],
+            [-103.2472136829162, 20.654448248500245],
+            [-103.2456352070806, 20.654864842951483],
+            [-103.2433776612041, 20.65462919255107],
+            [-103.24129999981751, 20.653976944076007],
+            [-103.2396450699055, 20.653804414504876],
+            [-103.23714468129882, 20.65358980334416],
+            [-103.23647911086181, 20.65343831277505],
+            [-103.2365285789345, 20.652933343118917],
+            [-103.2339922122025, 20.652706112064152],
+            [-103.23251266710813, 20.652558828712387],
+            [-103.22990884191083, 20.652272679837324],
+            [-103.22845627551469, 20.65212539804638],
+            [-103.22817295836886, 20.652070692608888],
+            [-103.22706482546336, 20.65188501750103],
+            [-103.22716825870702, 20.651333753243208],
+            [-103.22739475569277, 20.64972172310513],
+            [-103.22745771505808, 20.649263031189562],
+            [-103.22749818991129, 20.648434015351597],
+            [-103.22733179671972, 20.646451935903272],
+            [-103.22732871498485, 20.645020374702995],
+            [-103.2273113382162, 20.644212748800996],
+            [-103.22726500198193, 20.642407769464015],
+            [-103.2272163979206, 20.6407809374562],
+            [-103.2272801127391, 20.64004917565198],
+            [-103.22615062203997, 20.63953965073634],
+            [-103.22511380817379, 20.639030123916882],
+            [-103.2242516957492, 20.641815870379062],
+            [-103.22344561867058, 20.64171863873763],
+            [-103.22255940389203, 20.644293313191127]
+          ]
+      }
+    },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Emiliano Zapata"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.43439364058958, 20.68139576651177]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Gabriele D'Annunzio"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.42843617429142, 20.680565809068327]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Novelistas"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.42786808559535, 20.684208444452523]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Naciones Unidas"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.42705433409004, 20.688183949771243]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Ramón del Valle Inclán"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.42463632510224, 20.687485627803753]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Bruno Traven"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.42003610225613, 20.687965246011004]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Plaza Universidad"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.41748444595498, 20.69009082269521]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Bugambilias"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.414380678632, 20.691646312080493]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Bajada De Las Águilas"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.4126763777321, 20.691633350107836]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Bello Horizonte"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.4097409518921, 20.691777524090654]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Paseo Loma Ancha"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.40554342499448, 20.69201149137882]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Circuito Madrigal"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.40305758542816, 20.693895557202154]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Paseo del Mirador"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.39916771266563, 20.694982918667534]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Nueva Escocia"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.39582087360589, 20.695853956450975]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Terranova"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.39192025677576, 20.696864232255493]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Rubén Darío"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.38858278425352, 20.697671666199568]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Montreal"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.38471591597666, 20.698080765649706]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Ottawa"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.38114827160706, 20.697370226076785]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Buenos Aires"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.37765513339961, 20.6983850376201]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Glorieta Colón"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.37476649284989, 20.699547728607214]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Glorieta Colón"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.37306323214793, 20.696414897403486]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Heroico Colegio Militar"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.37009403800992, 20.697125444642538]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Provincia"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.36799948649805, 20.69396026686701]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Glorieta Del Ingeniero"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.36446636664338, 20.693475795958378]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Canarias"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.36034587015448, 20.693389669640027]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Jaime Nunó"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.35691633041702, 20.693303542075284]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Ignacio Ramírez"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.35308399902296, 20.693163583783075]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Avenida De Los Maestros X Gregorio Dávila"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.35035647786613, 20.694261718866883]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Enrique Díaz de León"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.34793895642548, 20.695746877311706]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Miguel Galindo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.34717939544353, 20.69355062092032]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Aguamarina"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.34360113067132, 20.693128673265775]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "José María Coss"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.34024012695676, 20.69331543033796]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Acuario Michín"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.3369486995028, 20.69509182043059]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Parque Alcalde"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.33343859485285, 20.694736538655633]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Santa Mónica"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.33041185295791, 20.6932292975729]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Pedro Loza"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.32695929361557, 20.691592845589625]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Torres Quintero"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.32389688620067, 20.690057276596434]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Estación La Normal (Cetram)"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.32043282555671, 20.68910983835829]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Calle Belén"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.31717590415218, 20.689357467828103]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Glorieta de los Maestros"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.31375786939954, 20.690778618897085]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Brillante"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.30971670415447, 20.691672526875294]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Mil Cumbres"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.3066439276075, 20.691005021998365]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Sierra Leona"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.30282309491255, 20.69033751365596]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Calzada Independencia Norte"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29833476861772, 20.68950850880863]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Sierra Nevada"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29511238396198, 20.68880869627452]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Monte Albán"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29441035794743, 20.69143566694015]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Montes Urales"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2944333843902, 20.693771915569386]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Monte Parnaso"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29440973847441, 20.697315278912086]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Belisario Domínguez"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29362947100867, 20.69820495334112]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Cerro Azul"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29292817522155, 20.697946914086657]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Av. Puerto Melaque"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29211106972737, 20.69769930210215]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "San Mariano"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.29044233315483, 20.697193311137738]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Santa Rosalía"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28771542202757, 20.696299755282098]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "San Pedro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28684650328455, 20.698795179527664]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Espíritu Santo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28653577302616, 20.69958107136081]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Juan De Dios Robledo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28419161773377, 20.699494940044076]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Genovevo Rivas Guillén"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28414558362144, 20.699925564223392]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Francisco González Bocanegra"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28387508104427, 20.70197926767925]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "HGR IMSS 110"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28315033259231, 20.70298536148114]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Francisco Sarabia"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.28148930651538, 20.70336991751222]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Gran Terraza Oblatos"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.27876451248514, 20.700855889361364]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Unidad Administrativa Prisciliano Sánchez"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.27669297777884, 20.69897190738733]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda La Mariscala"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.27485161327259, 20.697324752635836]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda de Tala"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.27275743076365, 20.69541419029187]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Santiago"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26740596660615, 20.69232434386788]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Mazatepec"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26405680754765, 20.690442820481763]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Glorieta Del Obrero"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26371155350762, 20.689678413414583]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Del Carmen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26374607909177, 20.688268019389838]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Av. Joaquín Amaro"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2636885364513, 20.687019109919817]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Batalla De Chilapa"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26365779064366, 20.68588648894699]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Plutarco Elías Calles"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26432528527275, 20.68587572236126]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Del Jardín"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2641526573513, 20.684626793199982]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Apacuero"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2634731572503, 20.683323319295]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Medocina"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26320846511275, 20.6826234798707]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Ciénega De Mata"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26267907282097, 20.682591179415326]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda Bellavista"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26257831399776, 20.681583046369127]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hacienda De Los Laureles"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26234814343618, 20.680258713005998]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Calz. Juan Pablo Ll"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26155016232282, 20.680114533810098]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Periférico Oriente"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.26019215600869, 20.679963795803957]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Pascual Ortiz"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2590528117283, 20.679888426744412]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Rafael Campoy"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25897225203148, 20.67888709140449]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Egipto"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2589032087835, 20.677961120271064]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Betania"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25877661497472, 20.676992073870935]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Malecón"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25760274510982, 20.677304322830707]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "San Julián"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25756823079467, 20.675549263061583]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "La Barca"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25745315594664, 20.67454790156681]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Atotonilco El Alto"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2569007588384, 20.67291125171242]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "El Grullo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25671662238915, 20.672254432426328]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Tlaquepaque"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25634836370844, 20.670983860772978]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "La Barca"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25548830728731, 20.669545301343803]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Tequila"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2540957884477, 20.667488646571385]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Bolaños"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25330170000984, 20.666271870075448]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Jilotlan De Los Dolores"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25192067681489, 20.664279774384653]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "San Cristóbal De La Barranca"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25157542097239, 20.66323526335499]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Tlajomulco De Zúñiga"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25325566660601, 20.66234150089943]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Mascota"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25296795340395, 20.661792318885702]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Tala"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25292191929164, 20.660984694671455]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Tamazula De Gordiano"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2530600233931, 20.65898176806472]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "San Gaspar"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25079284335979, 20.658917157090087]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Flor De Durazno"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25083888771128, 20.657896170726914]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Avenida Del Paraíso"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25097699004823, 20.65653932480562]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Lila"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25119565408437, 20.65495632240217]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Azalea"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.25144998272194, 20.65293457653543]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Madre Selva"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.24854036347283, 20.65341850392079]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Idalia"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.24796473498682, 20.653889807480866]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Matatlán"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2472136829162, 20.654448248500245]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Geranio"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2456352070806, 20.654864842951483]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Flor De Noche Buena"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2433776612041, 20.65462919255107]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Flor De Loto"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.24129999981751, 20.653976944076007]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Capuchina"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2396450699055, 20.653804414504876]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Manzano"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.23714468129882, 20.65358980334416]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hortensia"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.23647911086181, 20.65343831277505]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Pról. Gigantes"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2365285789345, 20.652933343118917]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Campos Vida"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2339922122025, 20.652706112064152]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Loma Del Monte"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.23251266710813, 20.652558828712387]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Manuel López Cotilla"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22990884191083, 20.652272679837324]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Loma Del Potrero"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22845627551469, 20.65212539804638]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Privada Loma Alta"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22817295836886, 20.652070692608888]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Zalatitan"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22706482546336, 20.65188501750103]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Benjamín García"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22716825870702, 20.651333753243208]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Antonio Caso"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22739475569277, 20.64972172310513]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Juan Tablada"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22745771505808, 20.649263031189562]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "San Alfredo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22749818991129, 20.648434015351597]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Santa Janeth"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22733179671972, 20.646451935903272]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "And. De La Noria"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22732871498485, 20.645020374702995]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "De La Loma"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2273113382162, 20.644212748800996]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Av. Tonaltecas"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22726500198193, 20.642407769464015]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Tonaltecas"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2272163979206, 20.6407809374562]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Prado Soleado"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2272801127391, 20.64004917565198]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Clínica 184 Imss"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22615062203997, 20.63953965073634]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Hidalgo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22511380817379, 20.639030123916882]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Prados Del Pino"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.2242516957492, 20.641815870379062]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Prado De La Higuera"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22344561867058, 20.64171863873763]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "stop": true,
+          "name": "Nacimiento Sur"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-103.22255940389203, 20.644293313191127]
+        }
+      }
+    ]
+}
