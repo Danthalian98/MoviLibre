@@ -65,7 +65,7 @@ fun mostrarRutaCaminando(
     origin: LatLng,
     destination: LatLng,
     coroutineScope: CoroutineScope,
-    onRouteInfo: (String) -> Unit // Callback para actualizar el tiempo
+    onRouteInfo: (Long?) -> Unit
 ) {
     val apiKey = context.getString(R.string.gmaps_key)
     coroutineScope.launch {
@@ -77,13 +77,7 @@ fun mostrarRutaCaminando(
                 .width(10f)
             map.addPolyline(polylineOptions)
 
-
-            val minutes = durationSeconds?.let { it / 60 }
-            if (minutes != null) {
-                onRouteInfo("Tiempo a pie: $minutes mins.")
-            } else {
-                onRouteInfo("Tiempo a pie: N/A")
-            }
+            onRouteInfo(durationSeconds)
 
             // Animar la cámara a la ruta a pie para que sea visible
             val bounds = LatLng(
@@ -96,7 +90,7 @@ fun mostrarRutaCaminando(
             // Consider adjusting camera to fit both origin and destination
             // map.animateCamera(CameraUpdateFactory.newLatLngBounds(LatLngBounds.builder().include(origin).include(destination).build(), 100))
         } else {
-            onRouteInfo("No se encontró ruta a pie.")
+            onRouteInfo(999999)
         }
     }
 }
@@ -107,7 +101,7 @@ fun cargarGeoJson(
     geoJsonRawResId: Int,
     userLocation: LatLng?,
     coroutineScope: CoroutineScope,
-    onWalkingRouteInfo: (String) -> Unit,
+    onWalkingRouteInfo: (Long?) -> Unit,
     onBusStopSelected: (LatLng) -> Unit // Nuevo callback para la parada seleccionada
 ) {
     val layer = GeoJsonLayer(map, geoJsonRawResId, context)

@@ -5,21 +5,13 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
@@ -34,8 +26,11 @@ import com.proyecto.movilibre.data.UserPreferences
 import com.proyecto.movilibre.util.cargarGeoJson
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.maps.model.MarkerOptions
+import com.proyecto.movilibre.componentes.BotonesTarjeta
 import com.proyecto.movilibre.util.mostrarRutaCaminando
-import com.google.android.gms.maps.model.Polyline // Import Polyline for the walking route
+import com.proyecto.movilibre.componentes.TarjetaProximaUnidad
+import com.proyecto.movilibre.componentes.TarjetaRuta
+import com.proyecto.movilibre.componentes.TarjetaTiempoCaminando
 
 
 @Composable
@@ -54,9 +49,8 @@ fun Mainview(navController: NavHostController) {
         ?.collectAsState(initial = "")
 
     val locationPermissionGranted = remember { mutableStateOf(false) }
-    var walkingRouteTime by remember { mutableStateOf<String>("Tiempo a pie: N/A") } // Estado para mostrar el tiempo a pie
+    var walkingRouteTime by remember { mutableStateOf<Long?>(null) }
 
-    // Nuevo estado para la parada de autobús seleccionada
     var selectedBusStopDestination by remember { mutableStateOf<LatLng?>(null) }
 
 
@@ -119,7 +113,7 @@ fun Mainview(navController: NavHostController) {
                 map.clear()
 
                 // Añadir marcador de la ubicación del usuario
-                map.addMarker(MarkerOptions().position(userLocation!!).title("Tu ubicación"))
+                //map.addMarker(MarkerOptions().position(userLocation!!).title("Tu ubicación"))
 
                 // Cargar la ruta de autobús en función de la selección
                 // Pasa el callback para actualizar selectedBusStopDestination
@@ -128,6 +122,36 @@ fun Mainview(navController: NavHostController) {
                         context = context,
                         map = map,
                         geoJsonRawResId = R.raw.ruta_c54,
+                        userLocation = userLocation,
+                        coroutineScope = coroutineScope,
+                        onWalkingRouteInfo = { info ->
+                            walkingRouteTime = info
+                        },
+                        onBusStopSelected = { latLng ->
+                            selectedBusStopDestination = latLng
+                        }
+                    )
+                }
+                if (selectedRuta?.value == "622") {
+                    cargarGeoJson(
+                        context = context,
+                        map = map,
+                        geoJsonRawResId = R.raw.ruta_622,
+                        userLocation = userLocation,
+                        coroutineScope = coroutineScope,
+                        onWalkingRouteInfo = { info ->
+                            walkingRouteTime = info
+                        },
+                        onBusStopSelected = { latLng ->
+                            selectedBusStopDestination = latLng
+                        }
+                    )
+                }
+                if (selectedRuta?.value == "27") {
+                    cargarGeoJson(
+                        context = context,
+                        map = map,
+                        geoJsonRawResId = R.raw.ruta_c64,
                         userLocation = userLocation,
                         coroutineScope = coroutineScope,
                         onWalkingRouteInfo = { info ->
@@ -147,8 +171,8 @@ fun Mainview(navController: NavHostController) {
                         origin = userLocation!!,
                         destination = destination,
                         coroutineScope = coroutineScope,
-                        onRouteInfo = { info ->
-                            walkingRouteTime = info
+                        onRouteInfo = { seconds ->
+                            walkingRouteTime = seconds
                         }
                     )
                 }
@@ -174,113 +198,17 @@ fun Mainview(navController: NavHostController) {
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
-            Row(modifier = Modifier.fillMaxWidth()) {
-                Button(
-                    onClick = { navController.navigate("rutasv") },
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(end = 4.dp, bottom = 8.dp)
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.btnRutas),
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontSize = 16.sp
-                    )
-                }
+            BotonesTarjeta(navController = navController)
 
-                Button(
-                    onClick = { navController.navigate("ajustesv") },
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(start = 4.dp, bottom = 8.dp)
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.btnAjustes),
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontSize = 16.sp
-                    )
-                }
-            }
+            TarjetaRuta(ruta = selectedRuta?.value, tiempo = 15L)
 
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                elevation = CardDefaults.cardElevation(8.dp)
-            ) {
-                Row(
-                    modifier = Modifier.padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_bus),
-                        contentDescription = "Bus Icon",
-                        modifier = Modifier.size(64.dp)
-                    )
+            TarjetaTiempoCaminando(
+                visible = selectedBusStopDestination != null && (walkingRouteTime ?: 0L) >= 10L,
+                tiempo = walkingRouteTime
+            )
 
-                    Spacer(modifier = Modifier.width(16.dp))
+            TarjetaProximaUnidad(ruta = selectedRuta?.value, tiempoUnidad = 10L)
 
-                    Column {
-                        Text(text = "Ruta: X - M", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
-                        Text(text = "Tiempo: Y mins.", color = MaterialTheme.colorScheme.onSurface)
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = "Disp.:", color = MaterialTheme.colorScheme.onSurface)
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Box(
-                                modifier = Modifier
-                                    .size(16.dp)
-                                    .clip(CircleShape)
-                                    .background(colorResource(id = R.color.Naranja))
-                            )
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Box(
-                                modifier = Modifier
-                                    .size(16.dp)
-                                    .clip(CircleShape)
-                                    .background(colorResource(id = R.color.Verde))
-                            )
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(8.dp))
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                elevation = CardDefaults.cardElevation(8.dp)
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = walkingRouteTime, // Muestra el estado del tiempo a pie
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                elevation = CardDefaults.cardElevation(8.dp)
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(text = "Próxima ruta: X - N", color = MaterialTheme.colorScheme.onSurface)
-                    Text(text = "Dentro de: X mins.", color = MaterialTheme.colorScheme.onSurface)
-                }
-            }
         }
     }
 }
