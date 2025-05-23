@@ -1,6 +1,5 @@
 package com.proyecto.movilibre.componentes
 
-import android.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
