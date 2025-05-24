@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
 import com.proyecto.movilibre.componentes.*
 import com.proyecto.movilibre.data.AuthHelper
+import com.google.firebase.auth.FirebaseAuth // Necesario para el signOut si se redirige
 
 @Composable
 fun Registroview(navController: NavHostController) {
@@ -92,7 +93,14 @@ fun Registroview(navController: NavHostController) {
                     isLoading = false
                     if (success) {
                         authHelper.saveCredential(correo, password, context)
-                        navController.navigate("mainv") {
+                        // Informar al usuario que se envió un correo de verificación
+                        Toast.makeText(context, "Registro exitoso. Revisa tu correo para verificar tu cuenta.", Toast.LENGTH_LONG).show()
+
+                        // Opcional: Redirigir al Login o a una pantalla de "Verifica tu correo"
+                        // y cerrar la sesión actual de Firebase para que el usuario inicie sesión
+                        // con la cuenta ya verificada después de hacer clic en el enlace.
+                        FirebaseAuth.getInstance().signOut()
+                        navController.navigate("login") { // Ir al login
                             popUpTo("registro") { inclusive = true }
                         }
                     } else {

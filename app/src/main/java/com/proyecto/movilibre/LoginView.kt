@@ -24,6 +24,7 @@ import com.proyecto.movilibre.componentes.btnLogin
 import com.proyecto.movilibre.data.AuthHelper
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import com.google.firebase.auth.FirebaseAuth // Todavía la necesitamos para FirebaseAuth.getInstance().signOut()
 
 @Composable
 fun LoginView(navController: androidx.navigation.NavHostController) {
@@ -34,8 +35,8 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
     val authHelper = AuthHelper()
     var isLoading by remember { mutableStateOf(false) }
     var loginFallido by remember { mutableStateOf(false) }
-    var esPasswordValida by remember { mutableStateOf(true) } // Nuevo estado para la validez de la contraseña
-    var mensajesErrorPassword by remember { mutableStateOf<List<String>>(emptyList()) } // Nuevo estado para los mensajes de error
+    var esPasswordValida by remember { mutableStateOf(true) }
+    var mensajesErrorPassword by remember { mutableStateOf<List<String>>(emptyList()) }
 
     LaunchedEffect(Unit) {
         authHelper.getSavedCredential(context)?.let { (savedEmail, savedPass) ->
@@ -48,7 +49,7 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .windowInsetsPadding(WindowInsets.ime), // o imePadding()
+            .windowInsetsPadding(WindowInsets.ime),
         horizontalAlignment = Alignment.CenterHorizontally
     )   {
         Text(
@@ -76,13 +77,15 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
         PasswInput(
             value = password,
             onValueChange = { password = it },
-            onValidationChange = { isValid, errors -> // Recibimos la validez y los errores
+            onValidationChange = { isValid, errors ->
                 esPasswordValida = isValid
                 mensajesErrorPassword = errors
             }
         )
 
         Spacer(modifier = Modifier.height(8.dp))
+
+        // *** Se ha eliminado el TextButton "¿Olvidaste tu contraseña?" y el ForgotPasswordDialog ***
 
         btnLogin(
             enabled = !isLoading && correo.isNotEmpty() && password.isNotEmpty(),
@@ -93,15 +96,20 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
                     if (success) {
                         loginFallido = false
                         if (isVerified) {
+                            Toast.makeText(context, "Inicio de sesión exitoso.", Toast.LENGTH_SHORT).show()
                             navController.navigate("mainv") {
                                 popUpTo("login") { inclusive = true }
                             }
                         } else {
-                            Toast.makeText(context, "Correo no verificado. Revisa tu email.", Toast.LENGTH_LONG).show()
+                            // Si el correo no está verificado
+                            Toast.makeText(context, "Tu correo no ha sido verificado. Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación.", Toast.LENGTH_LONG).show()
+                            // Opcional: Cerrar sesión para que el usuario no pueda acceder hasta que verifique
+                            FirebaseAuth.getInstance().signOut()
+                            // Opcional: Puedes ofrecer un botón aquí para reenviar el correo de verificación.
                         }
                     } else {
                         loginFallido = true
-                        Toast.makeText(context, "Login fallido", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Login fallido. Verifica tus credenciales.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -111,7 +119,6 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
             Spacer(modifier = Modifier.height(16.dp))
             CircularProgressIndicator(color = colorScheme.primary)
         }
-
 
         Spacer(modifier = Modifier.height(6.dp))
 
@@ -130,6 +137,7 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
     }
 }
 
+// *** El Composable ForgotPasswordDialog ha sido eliminado ***
 
 @Preview(showBackground = true)
 @Composable

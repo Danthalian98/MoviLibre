@@ -14,6 +14,7 @@ import androidx.credentials.exceptions.CreateCredentialException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await // Importar para usar await()
 
 class AuthHelper {
 
@@ -27,22 +28,35 @@ class AuthHelper {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val isVerified = auth.currentUser?.isEmailVerified ?: false
-                    onResult(true, isVerified)
+                    val user = auth.currentUser
+                    // PASO CRUCIAL: Recargar el usuario para obtener el estado más reciente de isEmailVerified
+                    user?.reload() // Inicia la recarga de forma asíncrona
+                        ?.addOnCompleteListener { reloadTask ->
+                            if (reloadTask.isSuccessful) {
+                                val isVerified = user.isEmailVerified
+                                onResult(true, isVerified) // Devolver el estado actualizado
+                            } else {
+                                // Error al recargar el usuario, tratar como no verificado o error de login
+                                Log.e("AuthHelper", "Error al recargar el usuario: ${reloadTask.exception?.message}")
+                                onResult(true, false) // Podrías considerar esto como un login exitoso pero con un problema de verificación. O false si prefieres.
+                            }
+                        }
                 } else {
-                    onResult(false, false)
+                    onResult(false, false) // Login fallido
                 }
             }
     }
 
-
-
+    // Nota: El método registerUser ya incluye sendEmailVerification().
+    // Sin embargo, si quieres manejar el resultado del envío del correo
+    // o hacer algo específico después de que se envía, podrías añadir
+    // un addOnCompleteListener a sendEmailVerification().
     fun registerUser(
         nombre: String,
         email: String,
         password: String,
         context: Context,
-        onResult: (Boolean) -> Unit
+        onResult: (Boolean) -> Unit // Considera cambiar el tipo de onResult si quieres devolver también si el correo fue enviado
     ) {
         val auth = FirebaseAuth.getInstance()
         val db = FirebaseFirestore.getInstance()
@@ -50,27 +64,40 @@ class AuthHelper {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    auth.currentUser?.sendEmailVerification()
+                    val user = auth.currentUser
+                    user?.sendEmailVerification() // Ya está aquí, lo cual es correcto
+                        ?.addOnCompleteListener { emailTask ->
+                            if (emailTask.isSuccessful) {
+                                Log.d("AuthHelper", "Correo de verificación enviado a: ${user.email}")
+                                // Podrías añadir un Toast aquí o manejarlo en el Registroview
+                            } else {
+                                Log.e("AuthHelper", "Error al enviar correo de verificación: ${emailTask.exception?.message}")
+                            }
+                        }
 
                     val userId = auth.currentUser?.uid
-                    val user = hashMapOf(
+                    val userFirestoreData = hashMapOf(
                         "nombre" to nombre,
                         "email" to email,
-                        "notificaciones" to true
+                        "notificaciones" to true,
+                        "emailVerificado" to false // Añadir este campo para control adicional si lo necesitas en Firestore
                     )
 
                     if (userId != null) {
                         db.collection("usuarios").document(userId)
-                            .set(user)
+                            .set(userFirestoreData)
                             .addOnSuccessListener {
-                                onResult(true)
+                                onResult(true) // Registro exitoso, incluyendo el envío del correo
                             }
                             .addOnFailureListener { e ->
-                                Log.e("Firestore", "Error guardando usuario: ", e)
+                                Log.e("Firestore", "Error guardando usuario en Firestore: ", e)
+                                // Aunque el usuario de Auth fue creado, Firestore falló. Podrías eliminar el usuario de Auth aquí.
+                                user?.delete() // Opcional: limpiar si Firestore falla
                                 onResult(false)
                             }
                     } else {
                         Log.e("Auth", "userId es null después del registro")
+                        // Si userId es null, no se pudo crear el usuario de Auth.
                         onResult(false)
                     }
                 } else {
@@ -79,7 +106,6 @@ class AuthHelper {
                     onResult(false)
                 }
             }
-
     }
 
     fun saveCredential(correo: String, password: String, context: Context) {
@@ -117,5 +143,4 @@ class AuthHelper {
             null
         }
     }
-
 }
