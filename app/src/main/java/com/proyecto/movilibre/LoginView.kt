@@ -143,6 +143,12 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
             }
         )
     }
+
+    RecuperarContrasena(
+        show = showForgotPasswordDialog,
+        onDismiss = { showForgotPasswordDialog = false }
+    )
+
 }
 
 @Preview(showBackground = true)
