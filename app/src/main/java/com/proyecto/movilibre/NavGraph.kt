@@ -23,5 +23,8 @@ fun AppNavigation(navController: NavHostController) {
         composable("registro") {
             Registroview(navController)
         }
+        composable("cambiar_contrasena") {
+            CambiarContrasenaView(navController)
+        }
     }
 }

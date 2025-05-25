@@ -191,7 +191,7 @@ fun btnDesplegable2(
                     }
 
                     Button(
-                        onClick = { /* cambiar contraseña */ },
+                        onClick = { navController.navigate("cambiar_contrasena") },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 6.dp),

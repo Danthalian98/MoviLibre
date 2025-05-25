@@ -47,10 +47,6 @@ class AuthHelper {
             }
     }
 
-    // Nota: El método registerUser ya incluye sendEmailVerification().
-    // Sin embargo, si quieres manejar el resultado del envío del correo
-    // o hacer algo específico después de que se envía, podrías añadir
-    // un addOnCompleteListener a sendEmailVerification().
     fun registerUser(
         nombre: String,
         email: String,

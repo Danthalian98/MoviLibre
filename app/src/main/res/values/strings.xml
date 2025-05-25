@@ -7,6 +7,7 @@
     <string name="title_Login">Iniciar Sesión</string>
     <string name="title_Registro">Registro</string>
     <string name="title_Rutas">Rutas</string>
+    <string name="title_CambiarContrasena">Cambiar Contraseña</string>
 
     <!-- ...Botones -->
     <string name="CrearC">Crear cuenta</string>

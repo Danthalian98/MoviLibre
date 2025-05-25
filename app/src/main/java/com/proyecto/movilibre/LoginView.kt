@@ -4,6 +4,8 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,15 +18,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.proyecto.movilibre.componentes.BtnVolver
 import com.proyecto.movilibre.componentes.CorreoInput
 import com.proyecto.movilibre.componentes.PasswInput
 import com.proyecto.movilibre.componentes.btnCrearC
 import com.proyecto.movilibre.componentes.btnLogin
 import com.proyecto.movilibre.data.AuthHelper
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import com.google.firebase.auth.FirebaseAuth // Todavía la necesitamos para FirebaseAuth.getInstance().signOut()
+
 
 @Composable
 fun LoginView(navController: androidx.navigation.NavHostController) {
@@ -37,6 +38,9 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
     var loginFallido by remember { mutableStateOf(false) }
     var esPasswordValida by remember { mutableStateOf(true) }
     var mensajesErrorPassword by remember { mutableStateOf<List<String>>(emptyList()) }
+
+    var showForgotPasswordDialog by remember { mutableStateOf(false) }
+
 
     LaunchedEffect(Unit) {
         authHelper.getSavedCredential(context)?.let { (savedEmail, savedPass) ->
@@ -85,7 +89,14 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // *** Se ha eliminado el TextButton "¿Olvidaste tu contraseña?" y el ForgotPasswordDialog ***
+        TextButton(
+            onClick = { showForgotPasswordDialog = true },
+            modifier = Modifier
+                .align(Alignment.End) // Alinea a la derecha
+                .padding(end = 16.dp)
+        ) {
+            Text("¿Olvidaste tu contraseña?", color = colorScheme.secondary)
+        }
 
         btnLogin(
             enabled = !isLoading && correo.isNotEmpty() && password.isNotEmpty(),
@@ -101,11 +112,8 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
                                 popUpTo("login") { inclusive = true }
                             }
                         } else {
-                            // Si el correo no está verificado
                             Toast.makeText(context, "Tu correo no ha sido verificado. Por favor, revisa tu bandeja de entrada y haz clic en el enlace de verificación.", Toast.LENGTH_LONG).show()
-                            // Opcional: Cerrar sesión para que el usuario no pueda acceder hasta que verifique
                             FirebaseAuth.getInstance().signOut()
-                            // Opcional: Puedes ofrecer un botón aquí para reenviar el correo de verificación.
                         }
                     } else {
                         loginFallido = true
@@ -136,8 +144,6 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
         )
     }
 }
-
-// *** El Composable ForgotPasswordDialog ha sido eliminado ***
 
 @Preview(showBackground = true)
 @Composable
