@@ -1,9 +1,17 @@
-package com.proyecto.movilibre
+package com.proyecto.movilibre.util
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.proyecto.movilibre.Ajustesview
+import com.proyecto.movilibre.CambiarContrasenaView
+import com.proyecto.movilibre.LoginView
+import com.proyecto.movilibre.Mainview
+import com.proyecto.movilibre.PerfilView
+import com.proyecto.movilibre.Registroview
+import com.proyecto.movilibre.Rutasview
+
 
 @Composable
 fun AppNavigation(navController: NavHostController) {
@@ -25,6 +33,9 @@ fun AppNavigation(navController: NavHostController) {
         }
         composable("cambiar_contrasena") {
             CambiarContrasenaView(navController)
+        }
+        composable("perfilv") {
+            PerfilView(navController)
         }
     }
 }

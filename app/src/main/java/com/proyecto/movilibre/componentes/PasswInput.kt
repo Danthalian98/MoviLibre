@@ -60,7 +60,7 @@ fun PasswInput(
         onValidationChange(esContrasenaValida, erroresContrasena)
     }
 
-    Column(modifier = Modifier.padding(8.dp)) {
+    Column(modifier = Modifier.padding(horizontal = 8.dp)) {
         OutlinedTextField(
             shape = RoundedCornerShape(50),
             value = value,

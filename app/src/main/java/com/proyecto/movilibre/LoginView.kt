@@ -87,8 +87,6 @@ fun LoginView(navController: androidx.navigation.NavHostController) {
             }
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
-
         TextButton(
             onClick = { showForgotPasswordDialog = true },
             modifier = Modifier

@@ -1,3 +1,4 @@
+// TarjetaRuta.kt
 package com.proyecto.movilibre.componentes
 
 import androidx.compose.foundation.Image
@@ -58,13 +59,20 @@ fun BotonesTarjeta(navController: NavHostController){
 }
 
 @Composable
-fun TarjetaRuta(ruta: String?, tiempo: Long?) {
-    var campos = false
-    if (ruta != "") campos = true else campos = false
-    val rutaStr = if (campos == true) "Ruta: $ruta" else "Seleccione una ruta"
-    val tiempoStr = if (campos == true && tiempo != null) "Tiempo: ${tiempo} min" else "Tiempo: N/A"
-    val color1 = if (campos == true) colorResource(id = R.color.Naranja) else MaterialTheme.colorScheme.tertiary
-    val color2 = if (campos == true) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.tertiary
+fun TarjetaRuta(ruta: String?, tiempo: Long?, isBusAvailable: Boolean?) {
+    val campos = !ruta.isNullOrBlank()
+    val rutaStr = if (campos) "Ruta: $ruta" else "Seleccione una ruta"
+    // Usamos la función formatearTiempo para el tiempo del bus
+    // *** POSIBLE PROBLEMA: Asegúrate de que 'tiempo' no sea null aquí. ***
+    val tiempoStr = if (campos && tiempo != null) "Llega en: ${formatearTiempo(tiempo)}" else "Tiempo: N/A"
+
+    // Determine the colors based on `isBusAvailable`
+    val availableColor = colorResource(id = R.color.Naranja) // Orange for available
+    val unavailableColor = MaterialTheme.colorScheme.tertiary // Your default tertiary color
+
+    val colorStatus1 = if (isBusAvailable == true) availableColor else unavailableColor
+    val colorStatus2 = if (isBusAvailable == false) availableColor else unavailableColor
+
 
     Card(
         modifier = Modifier
@@ -96,14 +104,14 @@ fun TarjetaRuta(ruta: String?, tiempo: Long?) {
                         modifier = Modifier
                             .size(16.dp)
                             .clip(CircleShape)
-                            .background(color1)
+                            .background(colorStatus1) // Use colorStatus1
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Box(
                         modifier = Modifier
                             .size(16.dp)
                             .clip(CircleShape)
-                            .background(color2)
+                            .background(colorStatus2) // Use colorStatus2
                     )
                 }
             }
@@ -111,9 +119,9 @@ fun TarjetaRuta(ruta: String?, tiempo: Long?) {
     }
 }
 
-
-fun formatearTiempoCaminando(segundos: Long?): String {
-    if (segundos == null) return "Sin datos"
+// Renombramos la función para que sea más genérica, ya que ahora se usa para el tiempo del bus también.
+fun formatearTiempo(segundos: Long?): String {
+    if (segundos == null) return "N/A" // Cambiado a N/A para ser consistente con el resto de la app
 
     val horas = segundos / 3600
     val minutos = (segundos % 3600) / 60
@@ -130,7 +138,7 @@ fun formatearTiempoCaminando(segundos: Long?): String {
 fun TarjetaTiempoCaminando(visible: Boolean, tiempo: Long?) {
     if (!visible) return
 
-    val tiempoFormateado = formatearTiempoCaminando(tiempo)
+    val tiempoFormateado = formatearTiempo(tiempo) // Usamos la función genérica
     val walkingRouteTime = "Tiempo a pie: $tiempoFormateado"
 
     Card(

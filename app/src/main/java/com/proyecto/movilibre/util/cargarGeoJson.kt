@@ -63,6 +63,51 @@ suspend fun obtenerYCalcularRutaCaminando( // Renombrada para claridad
     return obtenerRutaCaminando(origin, destination, apiKey)
 }
 
+suspend fun obtenerRutaAuto(
+    origin: LatLng,
+    destination: LatLng,
+    apiKey: String
+): Pair<List<LatLng>?, Long?> = withContext(Dispatchers.IO) {
+    val url = "https://maps.googleapis.com/maps/api/directions/json" +
+            "?origin=${origin.latitude},${origin.longitude}" +
+            "&destination=${destination.latitude},${destination.longitude}" +
+            "&mode=driving&key=$apiKey"
+
+    val client = OkHttpClient()
+    val request = Request.Builder().url(url).build()
+    val response = client.newCall(request).execute()
+    val body = response.body?.string() ?: return@withContext Pair(null, null)
+
+    val json = JSONObject(body)
+    val routes = json.getJSONArray("routes")
+    if (routes.length() == 0) return@withContext Pair(null, null)
+
+    val overviewPolyline = routes.getJSONObject(0).getJSONObject("overview_polyline")
+    val points = overviewPolyline.getString("points")
+
+    var durationSeconds: Long? = null
+    try {
+        val legs = routes.getJSONObject(0).getJSONArray("legs")
+        if (legs.length() > 0) {
+            val duration = legs.getJSONObject(0).getJSONObject("duration")
+            durationSeconds = duration.getLong("value")
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+
+    return@withContext Pair(PolyUtil.decode(points), durationSeconds)
+}
+
+suspend fun obtenerYCalcularRutaAuto(
+    context: Context,
+    origin: LatLng,
+    destination: LatLng
+): Pair<List<LatLng>?, Long?> {
+    val apiKey = context.getString(R.string.gmaps_key)
+    return obtenerRutaAuto(origin, destination, apiKey)
+}
+
 
 fun cargarGeoJson(
     context: Context,

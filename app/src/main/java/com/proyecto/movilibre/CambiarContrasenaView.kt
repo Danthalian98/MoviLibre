@@ -3,6 +3,8 @@ package com.proyecto.movilibre
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -51,11 +53,10 @@ fun CambiarContrasenaView(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorScheme.background)
-            .padding(16.dp),
+            .verticalScroll(rememberScrollState())
+            .windowInsetsPadding(WindowInsets.ime),
         horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Título de la vista
+    )   {
         Text(
             text = stringResource(id = R.string.title_CambiarContrasena),
             color = colorScheme.onPrimary,
@@ -67,13 +68,21 @@ fun CambiarContrasenaView(navController: NavHostController) {
                 .padding(20.dp)
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         Text(
             text = "Ingresa tu contraseña actual y la nueva contraseña.",
             color = colorScheme.onBackground,
+            fontSize = 18.sp,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
+        Spacer(modifier = Modifier.height(25.dp))
+
+        Text(
+            text = "Contraseña actual.",
+            color = colorScheme.onBackground,
             fontSize = 16.sp,
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         // Campo para la contraseña actual
@@ -87,6 +96,13 @@ fun CambiarContrasenaView(navController: NavHostController) {
         )
         Spacer(modifier = Modifier.height(16.dp))
 
+        Text(
+            text = "Nueva contraseña.",
+            color = colorScheme.onBackground,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
+
         // Campo para la nueva contraseña
         PasswInput(
             value = newPassword,
@@ -97,6 +113,13 @@ fun CambiarContrasenaView(navController: NavHostController) {
             }
         )
         Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Repetir nueva contraseña.",
+            color = colorScheme.onBackground,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
 
         // Campo para confirmar la nueva contraseña
         PasswInput(
@@ -151,7 +174,7 @@ fun CambiarContrasenaView(navController: NavHostController) {
                     }
             },
             enabled = !isLoading && currentPassword.isNotEmpty() && newPassword.isNotEmpty() && confirmNewPassword.isNotEmpty() && newPassword == confirmNewPassword && isCurrentPasswordValid && isNewPasswordValid,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = colorScheme.primary)
         ) {
             if (isLoading) {
