@@ -120,6 +120,9 @@ fun cargarGeoJson(
 ): GeoJsonLayer {
     val layer = GeoJsonLayer(map, geoJsonRawResId, context)
 
+    // Lista para guardar los estilos de puntos
+    val pointStyles = mutableListOf<Pair<GeoJsonPoint, GeoJsonPointStyle>>()
+
     for (feature in layer.features) {
         when (feature.geometry.geometryType) {
             "LineString" -> {
@@ -129,18 +132,24 @@ fun cargarGeoJson(
                 }
                 feature.lineStringStyle = lineStyle
             }
+
             "Point" -> {
                 val stopName = feature.getProperty("name") ?: "Parada"
+                val pointGeometry = feature.geometry as GeoJsonPoint
+
                 val pointStyle = GeoJsonPointStyle().apply {
                     title = stopName
                     snippet = "Parada de camión"
                     icon = BitmapDescriptorFactory.fromResource(R.drawable.ic_busstop)
                 }
+
                 feature.pointStyle = pointStyle
+                pointStyles.add(pointGeometry to pointStyle)
             }
         }
     }
 
+    // Listener para detectar clics en las paradas
     layer.setOnFeatureClickListener { feature ->
         val geometry = feature.geometry
         if (geometry.geometryType == "Point") {
@@ -152,6 +161,22 @@ fun cargarGeoJson(
         }
     }
 
+    // Agrega la capa al mapa
     layer.addLayerToMap()
+
+    // Listener para detectar cambios de zoom y actualizar íconos
+    map.setOnCameraIdleListener {
+        val zoom = map.cameraPosition.zoom
+        val nuevoIcono = if (zoom >= 14.2f) {
+            BitmapDescriptorFactory.fromResource(R.drawable.ic_busstop)
+        } else {
+            BitmapDescriptorFactory.fromResource(R.drawable.ic_busstop_invisible) // ícono transparente
+        }
+
+        for ((_, style) in pointStyles) {
+            style.icon = nuevoIcono
+        }
+    }
+
     return layer
 }

@@ -59,8 +59,10 @@ fun btnDesplegable(
                 unidades.forEach { unidad ->
                     TextButton(
                         onClick = {
-                            navController.previousBackStackEntry?.savedStateHandle?.set("rutaSeleccionada", unidad)
-                            navController.popBackStack()
+                            if (navController.previousBackStackEntry != null) {
+                                navController.previousBackStackEntry?.savedStateHandle?.set("rutaSeleccionada", unidad)
+                                navController.popBackStack()
+                            }
                         },
                         modifier = Modifier
                             .fillMaxWidth()

@@ -137,7 +137,7 @@ fun Mainview(navController: NavHostController) {
         val map = googleMapRef.value
         val location = userLocation
         if (map != null && location != null && !initialZoomDone) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16f))
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
             initialZoomDone = true
         }
     }
